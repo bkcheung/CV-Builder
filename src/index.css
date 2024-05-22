@@ -1,0 +1,53 @@
+:root {
+  font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+.section{
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to right, rgb(225 239 255), rgb(114 150 211));
+  margin: 2em;
+  padding: 2em;
+  border: 1px outset #a4a4a49e;
+  border-radius: 1em;
+}
+.inputField{
+  display: flex;
+}
+input {
+  margin: 1em;
+  flex: 1;
+  border: none;
+  border-radius: 0.25em;
+}
