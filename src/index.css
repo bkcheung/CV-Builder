@@ -15,6 +15,8 @@
 
 body {
   margin: 0;
+  background-image: url("/blue-sky.jpeg");
+  background-size: cover;
   display: flex;
   place-items: center;
   min-width: 320px;
@@ -36,7 +38,7 @@ body {
 .section{
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to right, rgb(225 239 255), rgb(114 150 211));
+  background: linear-gradient(to right, rgb(255 255 255 / 75%), rgb(45 141 203 / 75%));
   margin: 2em;
   padding: 2em;
   border: 1px outset #a4a4a49e;
