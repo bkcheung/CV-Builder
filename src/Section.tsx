@@ -1,14 +1,21 @@
 import Input from "./Input";
 
-function Section({sectionName=""}): JSX.Element{
+interface SectionProps{
+    key:number,
+    sectionName:string,
+    inputs: (string | number) [][],
+    handleChange: (e:React.ChangeEvent<HTMLInputElement>) => void,
+}
+
+function Section({key = -1,sectionName="", inputs= [[-1,'']], handleChange}:SectionProps): JSX.Element{
     
     return (
-        <div className = "section">
+        <div key = {key} className = "section">
             <h2>{sectionName}:</h2>
-            <Input name="Name"></Input>
-            <Input name="Email address"></Input>
-            <Input name="Phone number"></Input>
-            <Input name="Address"></Input>
+            {inputs.map((input) => {
+                return <Input key = {Number(input[0])} name={String(input[1])} 
+                              handleChange={handleChange}></Input>
+            })}
         </div>
     )
 }
