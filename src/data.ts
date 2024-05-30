@@ -26,5 +26,5 @@ export const defaultData = {
     degree: 'Mechatronics Engineering',
     start: '09/2014',
     end: '05/2019',
-    location: 'Waterloo, Ontario'
+    location: 'Waterloo, Ontario',
 }

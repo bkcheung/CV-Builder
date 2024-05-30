@@ -13,7 +13,7 @@ function App(): JSX.Element{
                 inputs = {section.inputs.map((iField) => {
                     const field = iField.field;
                     return(
-                    <div key={iField.id}>
+                    <div key={iField.id} className='inputField'>
                         <label>{iField.title}</label>
                         <input 
                         {...register(field)}

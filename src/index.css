@@ -1,19 +1,6 @@
 :root {
   font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  /* color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424; */
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  
 }
-
 body {
   margin: 0;
   background-image: url("/blue-sky.jpeg");
@@ -22,19 +9,6 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
 .page{
   display: flex;
@@ -46,7 +20,7 @@ body {
 .section{
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to right, rgb(255 255 255 / 75%), rgb(45 141 203 / 75%));
+  background: linear-gradient(to right, rgb(255 255 255 / 50%), rgb(195 218 252/75%));
   margin: 2em;
   padding: 2em;
   border: 1px outset #a4a4a49e;
@@ -54,6 +28,7 @@ body {
 }
 .inputField{
   display: flex;
+  align-items: center;
 }
 input {
   margin: 1em;
@@ -66,8 +41,34 @@ input {
   flex-direction: column;
   background: white;
   margin: 2em;
-  padding: 2em;
-  border: 1px outset #a4a4a49e;
-  border-radius: 0.5em;
   width: 50vw;
+}
+.cvHeader{
+  background-color: rgb(195 218 252);
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+#cvName{
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+.flexRow{
+  display: flex;
+  justify-content: space-between;
+}
+.cvBody{
+  padding: 2em;
+}
+.sectionHeader{
+  background-color: #e5ecf6;
+  padding: 0.5em;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+.edu{
+  padding: 0.5em;
+  font-size: 0.85em;
 }
