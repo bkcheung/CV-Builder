@@ -1,21 +1,16 @@
-import Input from "./Input";
+import { ReactNode } from "react";
 
 interface SectionProps{
-    key:number,
     sectionName:string,
-    inputs: (string | number) [][],
-    handleChange: (e:React.ChangeEvent<HTMLInputElement>) => void,
+    inputs: ReactNode,
 }
 
-function Section({key = -1,sectionName="", inputs= [[-1,'']], handleChange}:SectionProps): JSX.Element{
+function Section({sectionName="",inputs}:SectionProps): JSX.Element{
     
     return (
-        <div key = {key} className = "section">
+        <div className = "section">
             <h2>{sectionName}:</h2>
-            {inputs.map((input) => {
-                return <Input key = {Number(input[0])} name={String(input[1])} 
-                              handleChange={handleChange}></Input>
-            })}
+            {inputs}
         </div>
     )
 }
