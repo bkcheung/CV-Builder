@@ -25,6 +25,7 @@ body {
   padding: 2em;
   border: 1px outset #a4a4a49e;
   border-radius: 1em;
+  box-shadow: 2px 2px 10px #00000033
 }
 .inputField{
   display: flex;
@@ -42,6 +43,7 @@ input {
   background: white;
   margin: 2em;
   width: 50vw;
+  box-shadow: 2px 2px 10px #00000033;
 }
 .cvHeader{
   background-color: rgb(195 218 252);
@@ -53,6 +55,9 @@ input {
 #cvName{
   font-size: 2em;
   margin-bottom: 0.5em;
+}
+.cvContact{
+  display: flex;
 }
 .flexRow{
   display: flex;
