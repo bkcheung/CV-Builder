@@ -7,10 +7,10 @@ interface SectionProps {
 
 function Section({ sectionName = "", inputs }: SectionProps): JSX.Element {
   return (
-    <div className="section">
+    <form className="section">
       <h2>{sectionName}:</h2>
       {inputs}
-    </div>
+    </form>
   );
 }
 
