@@ -1,8 +1,3 @@
-// interface infoProps{
-//     register: UseFormRegister<Record<defData, string>>;
-//     setValue: UseFormRegister<Record<defData, string>>;
-// }
-
 import { useFormContext } from "react-hook-form"
 
 function InfoSection(): JSX.Element {
