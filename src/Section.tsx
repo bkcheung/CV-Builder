@@ -12,9 +12,10 @@ function Section({ sectionName = "", inputs }: SectionProps): JSX.Element {
         toggleSection(e);
       }}>
         <h2>{sectionName}:</h2>
-        <img src="/direction.png" style={{ height: "1.5em"}}></img>
+        <img hidden={true} src="/down.png" style={{ height: "1.5em"}}></img>
+        <img hidden={false} src="/up.png" style={{ height: "1.5em"}}></img>
       </button>
-      <div className="inputSect, hidden">
+      <div className="inputSect" hidden={true}>
         {inputs}
       </div>
     </form>
@@ -25,8 +26,14 @@ function toggleSection(e:React.MouseEvent<HTMLButtonElement, MouseEvent>){
     e.preventDefault();
     const tar = e.target as HTMLElement;
     const form = tar.closest('form');
-    if(form!==null && form.querySelector('div')!==null){
-        form.querySelector('div')?.classList.toggle('hidden');
+    if(form!==null){
+        const imgs = form?.querySelectorAll('img');
+        for(let i=0;i<2;i++){
+            imgs[i].toggleAttribute('hidden');
+        }
+        if(form.querySelector('div')!==null){
+            form.querySelector('div')?.toggleAttribute('hidden');
+        }
     }
 }
 

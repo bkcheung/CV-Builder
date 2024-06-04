@@ -1,37 +1,23 @@
 import { FormProvider, useForm } from "react-hook-form";
-import { sectionData, defaultData, inputData } from "./data.ts";
+import { defaultData } from "./data.ts";
 import CV from "./CV.tsx";
 import Section from "./Section.tsx";
 import InfoSection from "./InfoSection.tsx";
+import EduSection from "./EduSection.tsx";
 
 
 function App(): JSX.Element {
 const methods = useForm({defaultValues: defaultData});
 
-  const sections = sectionData.map((section) => {
-    return (
+  const sections = 
       <>
         <InfoSection key={0}></InfoSection>
         <Section
-            key={section.id}
-            sectionName={section.sectionName}
-            inputs = {inputData.map((iField) => {
-                return (
-                    <div key={iField.id} className="inputField">
-                        <label>{iField.title}</label>
-                        <input
-                        {...methods.register(iField.field)}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                            methods.setValue(iField.field, e.target.value);
-                        }}
-                        ></input>
-                    </div>
-                );
-            })}
+            key={5}
+            sectionName={'Education'}
+            inputs = {<EduSection></EduSection>}
         />
       </>
-    );
-  });
 
   return (
     <div className="page">

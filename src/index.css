@@ -33,6 +33,34 @@ img{
   border-radius: 1em;
   box-shadow: 2px 2px 10px #00000033
 }
+.eduSection{
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 1em;
+  border: 1px outset #a4a4a49e;
+  border-radius: 0.5em;
+}
+.icon{
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 1.5em;
+}
+.edit{
+  background-image: url('/edit.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 1.5em;
+}
+.delete{
+  background-image: url('/delete.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 1.5em;
+}
 button{
   border: none;
   background: none;
