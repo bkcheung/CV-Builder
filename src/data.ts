@@ -7,7 +7,7 @@ export const defaultData:Record<defData, string> = {
     address: 'Toronto, Canada',
     school: 'University of Waterloo',
     degree: 'Mechatronics Engineering',
-    start: '09/2014',
-    end: '05/2019',
+    start: '2014-09',
+    end: '2019-05',
     location: 'Waterloo, Ontario',
 }

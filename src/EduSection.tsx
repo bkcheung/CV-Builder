@@ -28,14 +28,14 @@ function EduSection(): JSX.Element {
         </div>
         <div key={8} className="inputField">
             <label>Start Date</label>
-            <input {...register('start')} 
+            <input type="month" {...register('start')} 
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setValue('start', e.target.value)}}>
             </input>
         </div>
         <div key={9} className="inputField">
             <label>End Date</label>
-            <input {...register('end')} 
+            <input type="month" {...register('end')} 
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setValue('end', e.target.value)}}>
             </input>
@@ -46,6 +46,10 @@ function EduSection(): JSX.Element {
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setValue('location', e.target.value)}}>
             </input>
+        </div>
+        <div style={{display: "flex", justifyContent:"center"}}>
+            <button>Save</button>
+            <button>Cancel</button>
         </div>
       </div>
     </span>
