@@ -13,15 +13,16 @@ body {
 img{
   align-self: center;
 }
+button{
+  border:none;
+  background: none;
+}
 .page{
   display: flex;
 }
 .inputSections{
   display: flex;
   flex-direction: column;
-}
-.hidden{
-  display:none;
 }
 .section{
   display: flex;
@@ -53,6 +54,8 @@ img{
   background-position: center;
   background-repeat: no-repeat;
   width: 1.5em;
+  height: 1.5em;
+  margin: 0xp 5px;
 }
 .delete{
   background-image: url('/delete.png');
@@ -60,10 +63,8 @@ img{
   background-position: center;
   background-repeat: no-repeat;
   width: 1.5em;
-}
-button{
-  border: none;
-  background: none;
+  height: 1.5em;
+  margin:0px 5px;
 }
 .sectButton{
   border: none;
@@ -73,12 +74,14 @@ button{
   display: flex;
   align-items: center;
 }
+
 input {
   margin: 1em;
   flex: 1;
   border: none;
   border-radius: 0.25em;
 }
+/* CV Styling */
 .CV{
   display: flex;
   flex-direction: column;

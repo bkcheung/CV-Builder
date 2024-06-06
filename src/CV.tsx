@@ -1,6 +1,15 @@
+import dayjs from "dayjs";
 import { defaultData } from "./data";
 
 export default function CV({ props = defaultData }): JSX.Element {
+    let start = dayjs(props.start).format('MM/YYYY');
+    if(props.start===''){
+      start = "Start Date"
+    }
+    let end = dayjs(props.end).format('MM/YYYY');
+    if(props.end===''){
+      end = "Present";
+    }
   return (
     <div className="CV">
       <div className="cvHeader">
@@ -32,9 +41,7 @@ export default function CV({ props = defaultData }): JSX.Element {
             </div>
             <div className="flexCol">
               <i>
-                <div className="edu">
-                  {props.start} - {props.end}
-                </div>
+                <div className="edu">{start} - {end}</div>
               </i>
               <div className="edu">{props.location}</div>
             </div>

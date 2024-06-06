@@ -6,12 +6,14 @@ function EduSection(): JSX.Element {
   return (
     <span className="eduSection">
       <div className="flexRow">
-        <h3>{watch('school')}</h3>
-        <button className="edit" onClick={(e)=>{toggleSection(e)}}></button>
-        <button className="delete" onClick={(e)=>{del(e)}}></button>
+        <div style={{fontWeight:500}}>{watch('school')}</div>
+        <div>
+            <button className="edit" onClick={(e)=>{toggleSection(e); toggleEdit(e);}}></button>
+            <button className="delete" onClick={(e)=>{del(e)}}></button>
+        </div>
       </div>
       
-      <div className="inputSect" hidden={true}>
+      <div className="inputSect" style={{marginTop:'1em'}}hidden={true}>
         <div key={6} className="inputField">
             <label>School</label>
             <input {...register('school')} 
@@ -30,7 +32,8 @@ function EduSection(): JSX.Element {
             <label>Start Date</label>
             <input type="month" {...register('start')} 
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    setValue('start', e.target.value)}}>
+                    setValue('start', e.target.value)}}
+                    required>
             </input>
         </div>
         <div key={9} className="inputField">
@@ -48,29 +51,37 @@ function EduSection(): JSX.Element {
             </input>
         </div>
         <div style={{display: "flex", justifyContent:"center"}}>
-            <button>Save</button>
-            <button>Cancel</button>
+            <button type="submit" onClick={(e)=>saveChanges(e)}>Save</button>
+            <button onClick={(e) => canc(e)}>Cancel</button>
         </div>
       </div>
     </span>
   )
 }
-
 function toggleSection(e:React.MouseEvent<HTMLButtonElement, MouseEvent>){
     e.preventDefault();
     const tar = e.target as HTMLElement;
     const container = tar.closest('span');
-    if(container!==null){
-        const inputs = container.querySelector('div.inputSect');
-        if(inputs!==null){
-            inputs.toggleAttribute('hidden');
-        }
-    }
+    const inputs = container?.querySelector('div.inputSect');
+    inputs?.toggleAttribute('hidden');
 }
-
+function toggleEdit(e:React.MouseEvent<HTMLButtonElement, MouseEvent>){
+    const tar = e.target as HTMLElement;
+    const edit = tar.closest('span')?.querySelector('button.edit');
+    edit?.toggleAttribute('hidden');
+}
 function del(e:React.MouseEvent<HTMLButtonElement, MouseEvent>){
     e.preventDefault();
     //delete function here
+}
+function saveChanges(e:React.MouseEvent<HTMLButtonElement,MouseEvent>){
+    e.preventDefault();
+    //save function here
+}
+function canc(e:React.MouseEvent<HTMLButtonElement, MouseEvent>){
+    e.preventDefault();
+    toggleSection(e);
+    toggleEdit(e);
 }
 
 export default EduSection;

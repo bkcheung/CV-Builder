@@ -15,7 +15,7 @@ function Section({ sectionName = "", inputs }: SectionProps): JSX.Element {
         <img hidden={true} src="/down.png" style={{ height: "1.5em"}}></img>
         <img hidden={false} src="/up.png" style={{ height: "1.5em"}}></img>
       </button>
-      <div className="inputSect" hidden={true}>
+      <div hidden={true}>
         {inputs}
       </div>
     </form>
