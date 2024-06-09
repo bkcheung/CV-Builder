@@ -1,39 +1,49 @@
-import { useFormContext } from "react-hook-form"
+// import { useFormContext } from "react-hook-form"
+import Input from "./Input";
+import { pInfoType } from "./data";
 
-function InfoSection(): JSX.Element {
-  const {register, setValue} = useFormContext();
-    
+interface infoProps{
+  pInfo:Record<pInfoType,string>,
+  handleChange: (e:React.ChangeEvent<HTMLInputElement>) => void
+}
+function InfoSection({pInfo, handleChange}:infoProps): JSX.Element {
+  // const {register, setValue} = useFormContext();
+
   return (
     <form className="section">
       <h2>Personal Details:</h2>
-      <div key={1} className="inputField">
+      <Input 
+        title="Name"
+        id={'name'}
+        value={pInfo.name}
+        handleChange={handleChange}>
+      </Input>
+      <Input 
+        title="Email"
+        id={'email'}
+        value={pInfo.email}
+        handleChange={handleChange}>
+      </Input>
+      <Input 
+        title="Number"
+        id={'number'}
+        value={pInfo.number}
+        handleChange={handleChange}>
+      </Input>
+      <Input 
+        title="Location"
+        id={'address'}
+        value={pInfo.address}
+        handleChange={handleChange}>
+      </Input>
+      {/* <div key={1} className="inputField">
         <label>Name</label>
         <input {...register('name')} 
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setValue('name', e.target.value)}}>
         </input>
-      </div>
-      <div key={2} className="inputField">
-        <label>Email</label>
-        <input {...register('email')} 
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                setValue('email', e.target.value)}}>
-        </input>
-      </div>
-      <div key={3} className="inputField">
-        <label>Phone Number</label>
-        <input {...register('number')} 
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                setValue('number', e.target.value)}}>
-        </input>
-      </div>
-      <div key={4} className="inputField">
-        <label>Address</label>
-        <input {...register('address')} 
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                setValue('address', e.target.value)}}>
-        </input>
-      </div>
+      </div> */}
+      
     </form>
   )
 }

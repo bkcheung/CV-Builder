@@ -1,42 +1,27 @@
-import { FormProvider, useForm } from "react-hook-form";
-import { defaultData } from "./data.ts";
-import CV from "./CV.tsx";
-import Section from "./Section.tsx";
+import { useState } from "react";
 import InfoSection from "./InfoSection.tsx";
-import EduSection from "./EduSection.tsx";
-
+import { defPInfo } from "./data.ts";
 
 function App(): JSX.Element {
-const methods = useForm({defaultValues: defaultData});
-
+  const [pInfo,setPInfo] = useState(defPInfo);
   const sections = 
       <>
-        <InfoSection key={0}></InfoSection>
-        <Section
-            key={5}
-            sectionName={'Education'}
-            inputs = {<EduSection></EduSection>}
-        />
+        <InfoSection 
+          key={0} 
+          pInfo={pInfo}
+          handleChange={handleChange}
+        ></InfoSection>
       </>
-
+  function handleChange(e:React.ChangeEvent<HTMLInputElement>){
+    const id = e.target.id;
+    setPInfo({...pInfo,[id]:e.target.value})
+  }
   return (
     <div className="page">
       <div className="inputSections">
-        <FormProvider key={123} {...methods}>{sections}</FormProvider>
-        </div>
-      <CV key={100}
-        props={{
-          name: methods.watch("name"),
-          email: methods.watch("email"),
-          number: methods.watch("number"),
-          address: methods.watch("address"),
-          school: methods.watch("school"),
-          degree: methods.watch("degree"),
-          start: methods.watch("start"),
-          end: methods.watch("end"),
-          location: methods.watch("location"),
-        }}
-      ></CV>
+        {sections}
+      </div>
+  
     </div>
   );
 }

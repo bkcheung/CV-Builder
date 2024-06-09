@@ -1,4 +1,6 @@
 type defData = 'name'|'email'|'number'|'address'|'school'|'degree'|'start'|'end'|'location';
+export type pInfoType = 'name'|'email'|'number'|'address';
+
 
 export const defaultData:Record<defData, string> = {
     name: 'Bonnie Cheung',
@@ -10,4 +12,11 @@ export const defaultData:Record<defData, string> = {
     start: '2014-09',
     end: '2019-05',
     location: 'Waterloo, Ontario',
+}
+
+export const defPInfo:Record<pInfoType,string> = {
+    name: 'Bonnie Cheung',
+    email: 'bonnie@mail.com',
+    number: '416-123-4567',
+    address: 'Toronto, Canada'
 }
