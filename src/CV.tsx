@@ -1,18 +1,17 @@
-// import dayjs from "dayjs";
-import { pInfoType } from "./data";
+import { pInfoType, eduType } from "./data";
+import EduCV from "./EduCV";
+
 interface cvProps{
   pInfo: Record<pInfoType,string>
+  eduInfo: Record<eduType,string>[]
 }
 
-export default function CV({ pInfo }:cvProps): JSX.Element {
-    // let start = dayjs(props.start).format('MM/YYYY');
-    // if(props.start===''){
-    //   start = "Start Date"
-    // }
-    // let end = dayjs(props.end).format('MM/YYYY');
-    // if(props.end===''){
-    //   end = "Present";
-    // }
+export default function CV({ pInfo, eduInfo }:cvProps): JSX.Element {
+  const educations = eduInfo.map((edu)=>{
+    return(
+      <EduCV eduInfo={edu}></EduCV>
+    )});
+
   return (
     <div className="CV">
       <div className="cvHeader">
@@ -32,25 +31,9 @@ export default function CV({ pInfo }:cvProps): JSX.Element {
           </div>
         </div>
       </div>
-      {/* <div className="cvBody">
-        <div className="education">
-          <div className="sectionHeader">Education</div>
-          <div className="flexRow">
-            <div className="flexCol">
-              <div className="edu" style={{ fontWeight: 500 }}>
-                {props.degree}
-              </div>
-              <div className="edu">{props.school}</div>
-            </div>
-            <div className="flexCol">
-              <i>
-                <div className="edu">{start} - {end}</div>
-              </i>
-              <div className="edu">{props.location}</div>
-            </div>
-          </div>
-        </div>
-      </div> */}
+      <div className="cvBody">
+        {educations}
+      </div>
     </div>
   );
 }

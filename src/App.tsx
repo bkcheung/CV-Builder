@@ -24,11 +24,12 @@ function App(): JSX.Element {
   function eduChange(e:React.ChangeEvent<HTMLInputElement>){
     const sectID = e.target.closest('div.eduSection')?.id;
     const id = e.target.id;
-    for(let i=0; i<eduInfo.length;i++){
-      if(eduInfo[i].id===sectID){
-        eduInfo[i]={...eduInfo[i],[id]:e.target.value};
+    const mod = structuredClone(eduInfo); //to avoid modifying states directly
+    for(let i=0; i<mod.length;i++){
+      if(mod[i].id===sectID){
+        mod[i]={...mod[i],[id]:e.target.value};
       }
-      setEduInfo(eduInfo);
+      setEduInfo(mod);
     }
   }
   function addEdu(e:React.MouseEvent<HTMLButtonElement,MouseEvent>){
@@ -57,7 +58,10 @@ function App(): JSX.Element {
           addNew={addEdu}
         ></Section>
       </div>
-      <CV pInfo={pInfo}></CV>
+      <CV 
+        pInfo = {pInfo}
+        eduInfo = {eduInfo}
+      ></CV>
     </div>
   );
 }
