@@ -17,6 +17,7 @@ function Section({ sectionName = "", inputs }: SectionProps): JSX.Element {
       </button>
       <div hidden={true}>
         {inputs}
+        <button>Add New</button>
       </div>
     </form>
   );
