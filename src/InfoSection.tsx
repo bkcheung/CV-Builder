@@ -1,4 +1,3 @@
-// import { useFormContext } from "react-hook-form"
 import Input from "./Input";
 import { pInfoType } from "./data";
 
@@ -7,8 +6,6 @@ interface infoProps{
   handleChange: (e:React.ChangeEvent<HTMLInputElement>) => void
 }
 function InfoSection({pInfo, handleChange}:infoProps): JSX.Element {
-  // const {register, setValue} = useFormContext();
-
   return (
     <form className="section">
       <h2>Personal Details:</h2>
@@ -36,14 +33,6 @@ function InfoSection({pInfo, handleChange}:infoProps): JSX.Element {
         value={pInfo.address}
         handleChange={handleChange}>
       </Input>
-      {/* <div key={1} className="inputField">
-        <label>Name</label>
-        <input {...register('name')} 
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                setValue('name', e.target.value)}}>
-        </input>
-      </div> */}
-      
     </form>
   )
 }
