@@ -1,6 +1,7 @@
 import { useState } from "react";
 import InfoSection from "./InfoSection.tsx";
 import { defPInfo } from "./data.ts";
+import CV from "./CV.tsx";
 
 function App(): JSX.Element {
   const [pInfo,setPInfo] = useState(defPInfo);
@@ -21,7 +22,7 @@ function App(): JSX.Element {
       <div className="inputSections">
         {sections}
       </div>
-  
+      <CV pInfo={pInfo}></CV>
     </div>
   );
 }
