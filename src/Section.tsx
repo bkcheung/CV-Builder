@@ -3,9 +3,10 @@ import { ReactNode } from "react";
 interface SectionProps {
   sectionName: string;
   inputs: ReactNode;
+  addNew:(e:React.MouseEvent<HTMLButtonElement,MouseEvent>)=>void
 }
 
-function Section({ sectionName = "", inputs }: SectionProps): JSX.Element {
+function Section({ sectionName = "", inputs, addNew }: SectionProps): JSX.Element {
   return (
     <form className="section">
       <button className="flexRow" onClick={(e)=>{
@@ -17,7 +18,7 @@ function Section({ sectionName = "", inputs }: SectionProps): JSX.Element {
       </button>
       <div hidden={true}>
         {inputs}
-        <button>Add New</button>
+        <button onClick={(e)=>addNew(e)}>Add New</button>
       </div>
     </form>
   );

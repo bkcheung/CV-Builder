@@ -8,7 +8,7 @@ interface eduProps{
 function EduSection({eduInfo, handleChange}:eduProps): JSX.Element {
     
   return (
-    <div className="eduSection">
+    <div id={eduInfo.id}className="eduSection">
       <div className="flexRow">
         <div style={{fontWeight:500}}>{eduInfo.school}</div>
         <div>

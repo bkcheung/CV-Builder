@@ -13,6 +13,7 @@ function App(): JSX.Element {
     return(
       <EduSection
       eduInfo={edu}
+      handleChange={eduChange}
       ></EduSection>
     )})
   //functions to handle user changes  
@@ -21,8 +22,25 @@ function App(): JSX.Element {
     setPInfo({...pInfo,[id]:e.target.value})
   }
   function eduChange(e:React.ChangeEvent<HTMLInputElement>){
+    const sectID = e.target.closest('div.eduSection')?.id;
     const id = e.target.id;
-    setEduInfo({...eduInfo,[id]:e.target.value})
+    for(let i=0; i<eduInfo.length;i++){
+      if(eduInfo[i].id===sectID){
+        eduInfo[i]={...eduInfo[i],[id]:e.target.value};
+      }
+      setEduInfo(eduInfo);
+    }
+  }
+  function addEdu(e:React.MouseEvent<HTMLButtonElement,MouseEvent>){
+    //function to create new eduType object, and add it to eduInfo
+    e.preventDefault();
+    // const newEducation ={
+    //   school: "",
+    //   degree: "",
+    //   start: "",
+    //   end: "",
+    //   location: "",
+    // }
   }
   return (
     <div className="page">
@@ -36,7 +54,7 @@ function App(): JSX.Element {
           key={1}
           sectionName="Education"
           inputs={eduSections}
-          handleChange={eduChange}
+          addNew={addEdu}
         ></Section>
       </div>
       <CV pInfo={pInfo}></CV>
