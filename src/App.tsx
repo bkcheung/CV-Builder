@@ -60,7 +60,12 @@ function App(): JSX.Element {
   }
   function delEdu(e:React.MouseEvent<HTMLButtonElement, MouseEvent>){
       e.preventDefault();
-      //delete function here
+      const tar = e.target as HTMLElement;
+      const sectID = tar.closest('div.eduSection')?.id;
+      const mod = structuredClone(eduInfo);
+      const index = mod.findIndex((edu)=>edu.id===sectID);
+      mod.splice(index,1)
+      setEduInfo(mod);
   }
   function addEdu(e:React.MouseEvent<HTMLButtonElement,MouseEvent>){
     e.preventDefault();

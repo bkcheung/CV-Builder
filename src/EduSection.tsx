@@ -4,9 +4,8 @@ import { eduType } from "./data";
 interface eduProps{
     eduInfo:Record<eduType,string>,
     handleChange:(e:React.ChangeEvent<HTMLInputElement>)=>void
-    toggleEdu:(e:React.MouseEvent<HTMLButtonElement,MouseEvent>)=>void,
-    delEdu:(e:React.MouseEvent<HTMLButtonElement,MouseEvent>)=>void,
-
+    toggleEdu:(e:React.MouseEvent<HTMLButtonElement,MouseEvent>)=>void
+    delEdu:(e:React.MouseEvent<HTMLButtonElement,MouseEvent>)=>void
 }
 function EduSection({eduInfo, handleChange, toggleEdu, delEdu}:eduProps): JSX.Element {
   return (
