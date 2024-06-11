@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { v4 as uuid } from 'uuid';
 import InfoSection from "./InfoSection.tsx";
 import { defPInfo, defEducations } from "./data.ts";
 import CV from "./CV.tsx";
@@ -12,8 +13,9 @@ function App(): JSX.Element {
   const eduSections = eduInfo.map((edu)=>{
     return(
       <EduSection
-      eduInfo={edu}
-      handleChange={eduChange}
+      key={2}
+        eduInfo={edu}
+        handleChange={eduChange}
       ></EduSection>
     )})
   //functions to handle user changes  
@@ -33,15 +35,18 @@ function App(): JSX.Element {
     }
   }
   function addEdu(e:React.MouseEvent<HTMLButtonElement,MouseEvent>){
-    //function to create new eduType object, and add it to eduInfo
     e.preventDefault();
-    // const newEducation ={
-    //   school: "",
-    //   degree: "",
-    //   start: "",
-    //   end: "",
-    //   location: "",
-    // }
+    const newEducation ={
+      school: "New Education",
+      degree: "",
+      start: "",
+      end: "",
+      location: "",
+      id: uuid()
+    };
+    const newEdus=structuredClone(eduInfo);
+    newEdus.push(newEducation);
+    setEduInfo(newEdus);
   }
   return (
     <div className="page">
@@ -58,7 +63,8 @@ function App(): JSX.Element {
           addNew={addEdu}
         ></Section>
       </div>
-      <CV 
+      <CV
+        key={3}
         pInfo = {pInfo}
         eduInfo = {eduInfo}
       ></CV>
