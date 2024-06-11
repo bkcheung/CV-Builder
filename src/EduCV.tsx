@@ -15,8 +15,7 @@ function EduCV({eduInfo}:eduProps): JSX.Element {
       end = "Present";
     }
     return(
-        <div className="education">
-          <div className="sectionHeader">Education</div>
+       
           <div className="flexRow">
             <div className="flexCol">
               <div className="edu" style={{ fontWeight: 500 }}>
@@ -31,7 +30,6 @@ function EduCV({eduInfo}:eduProps): JSX.Element {
               <div className="edu">{eduInfo.location}</div>
             </div>
           </div>
-        </div>
     )}
 
 export default EduCV;

@@ -4,16 +4,18 @@ import { eduType } from "./data";
 interface eduProps{
     eduInfo:Record<eduType,string>,
     handleChange:(e:React.ChangeEvent<HTMLInputElement>)=>void
+    toggleEdu:(e:React.MouseEvent<HTMLButtonElement,MouseEvent>)=>void,
+    delEdu:(e:React.MouseEvent<HTMLButtonElement,MouseEvent>)=>void,
+
 }
-function EduSection({eduInfo, handleChange}:eduProps): JSX.Element {
-    
+function EduSection({eduInfo, handleChange, toggleEdu, delEdu}:eduProps): JSX.Element {
   return (
     <div id={eduInfo.id}className="eduSection">
       <div className="flexRow">
         <div style={{fontWeight:500}}>{eduInfo.school}</div>
         <div>
-            <button className="edit" onClick={(e)=>{toggleSection(e)}}></button>
-            <button className="delete" onClick={(e)=>{del(e)}}></button>
+            <button className="edit" onClick={(e)=>{toggleEdu(e)}}></button>
+            <button className="delete" onClick={(e)=>{delEdu(e)}}></button>
         </div>
       </div>
       <div className="inputSect" hidden={true}>
@@ -49,24 +51,12 @@ function EduSection({eduInfo, handleChange}:eduProps): JSX.Element {
         ></Input>
         <div>
             <div style={{display: "flex", justifyContent:"center"}}>
-                <button onClick={(e)=>toggleSection(e)}>Done</button>
+                <button onClick={(e)=>toggleEdu(e)}>Done</button>
             </div> 
         </div>
       </div>
     </div>
   )
-}
-function toggleSection(e:React.MouseEvent<HTMLButtonElement, MouseEvent>){
-    e.preventDefault();
-    const tar = e.target as HTMLElement;
-    const inputs = tar.closest('div.eduSection')?.querySelector('div.inputSect');
-    inputs?.toggleAttribute('hidden');
-    const edit = tar.closest('div.eduSection')?.querySelector('button.edit');
-    edit?.toggleAttribute('hidden');
-}
-function del(e:React.MouseEvent<HTMLButtonElement, MouseEvent>){
-    e.preventDefault();
-    //delete function here
 }
 
 export default EduSection;

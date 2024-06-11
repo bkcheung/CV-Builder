@@ -13,9 +13,11 @@ function App(): JSX.Element {
   const eduSections = eduInfo.map((edu)=>{
     return(
       <EduSection
-      key={2}
+        key={edu.id}
         eduInfo={edu}
         handleChange={eduChange}
+        toggleEdu={toggleEdu}
+        delEdu={delEdu}
       ></EduSection>
     )})
   //functions to handle user changes  
@@ -34,15 +36,41 @@ function App(): JSX.Element {
       setEduInfo(mod);
     }
   }
+  function toggleSection(e:React.MouseEvent<HTMLButtonElement, MouseEvent>){
+    e.preventDefault();
+    const tar = e.target as HTMLElement;
+    const form = tar.closest('form');
+    if(form!==null){
+        const imgs = form?.querySelectorAll('img');
+        for(let i=0;i<2;i++){
+            imgs[i].toggleAttribute('hidden');
+        }
+        if(form.querySelector('div')!==null){
+            form.querySelector('div')?.toggleAttribute('hidden');
+        }
+    }
+  }
+  function toggleEdu(e:React.MouseEvent<HTMLButtonElement, MouseEvent>){
+    e.preventDefault();
+    const tar = e.target as HTMLElement;
+    const inputs = tar.closest('div.eduSection')?.querySelector('div.inputSect');
+    inputs?.toggleAttribute('hidden');
+    const edit = tar.closest('div.eduSection')?.querySelector('button.edit');
+    edit?.toggleAttribute('hidden');
+  }
+  function delEdu(e:React.MouseEvent<HTMLButtonElement, MouseEvent>){
+      e.preventDefault();
+      //delete function here
+  }
   function addEdu(e:React.MouseEvent<HTMLButtonElement,MouseEvent>){
     e.preventDefault();
     const newEducation ={
-      school: "New Education",
+      school: "",
       degree: "",
       start: "",
       end: "",
       location: "",
-      id: uuid()
+      id: uuid(),
     };
     const newEdus=structuredClone(eduInfo);
     newEdus.push(newEducation);
@@ -52,19 +80,17 @@ function App(): JSX.Element {
     <div className="page">
       <div className="inputSections">
         <InfoSection 
-          key={0} 
           pInfo={pInfo}
           handleChange={pInfoChange}
         ></InfoSection>
         <Section
-          key={1}
           sectionName="Education"
           inputs={eduSections}
           addNew={addEdu}
+          toggleSection={toggleSection}
         ></Section>
       </div>
       <CV
-        key={3}
         pInfo = {pInfo}
         eduInfo = {eduInfo}
       ></CV>

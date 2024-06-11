@@ -9,7 +9,7 @@ interface cvProps{
 export default function CV({ pInfo, eduInfo }:cvProps): JSX.Element {
   const educations = eduInfo.map((edu)=>{
     return(
-      <EduCV eduInfo={edu}></EduCV>
+      <EduCV key={edu.id} eduInfo={edu}></EduCV>
     )});
 
   return (
@@ -32,7 +32,10 @@ export default function CV({ pInfo, eduInfo }:cvProps): JSX.Element {
         </div>
       </div>
       <div className="cvBody">
-        {educations}
+        <div className="education">
+            <div className="sectionHeader">Education</div>
+            {educations}
+        </div>
       </div>
     </div>
   );
