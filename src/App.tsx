@@ -9,7 +9,6 @@ import EduSection from "./EduSection.tsx";
 function App(): JSX.Element {
   const [pInfo,setPInfo] = useState(defPInfo);
   const [eduInfo, setEduInfo] = useState(defEducations);
-  const [activeIndex, setActiveIndex] = useState(-1);
 
   //generate sections
   const eduSections = eduInfo.map((edu)=>{
@@ -94,9 +93,7 @@ function App(): JSX.Element {
           sectionName="Education"
           inputs={eduSections}
           addNew={addEdu}
-          // toggleSection={toggleSection}
-          isActive={activeIndex === 0}
-          onShow={(e) => {e.preventDefault(); setActiveIndex(0)}}
+          toggleSection={toggleSection}
         ></Section>
       </div>
       <CV
