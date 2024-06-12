@@ -9,6 +9,7 @@ import EduSection from "./EduSection.tsx";
 function App(): JSX.Element {
   const [pInfo,setPInfo] = useState(defPInfo);
   const [eduInfo, setEduInfo] = useState(defEducations);
+  const [activeEdu, setActiveEdu] = useState('');
 
   //generate sections
   const eduSections = eduInfo.map((edu)=>{
@@ -17,7 +18,10 @@ function App(): JSX.Element {
         key={edu.id}
         eduInfo={edu}
         handleChange={eduChange}
-        toggleEdu={toggleEdu}
+        isActive={activeEdu===edu.id}
+        toggleEdu={(e:React.MouseEvent<HTMLButtonElement,MouseEvent>)=>{
+          e.preventDefault();
+          {(activeEdu===edu.id)? setActiveEdu('') : setActiveEdu(edu.id)}}}
         delEdu={delEdu}
       ></EduSection>
     )})
@@ -51,14 +55,6 @@ function App(): JSX.Element {
         }
     }
   }
-  function toggleEdu(e:React.MouseEvent<HTMLButtonElement, MouseEvent>){
-    e.preventDefault();
-    const tar = e.target as HTMLElement;
-    const inputs = tar.closest('div.eduSection')?.querySelector('div.inputSect');
-    inputs?.toggleAttribute('hidden');
-    const edit = tar.closest('div.eduSection')?.querySelector('button.edit');
-    edit?.toggleAttribute('hidden');
-  }
   function delEdu(e:React.MouseEvent<HTMLButtonElement, MouseEvent>){
       e.preventDefault();
       const tar = e.target as HTMLElement;
@@ -81,6 +77,7 @@ function App(): JSX.Element {
     const newEdus=structuredClone(eduInfo);
     newEdus.push(newEducation);
     setEduInfo(newEdus);
+    setActiveEdu(newEducation.id);
   }
   return (
     <div className="page">

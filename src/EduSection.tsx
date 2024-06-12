@@ -4,10 +4,11 @@ import { eduType } from "./data";
 interface eduProps{
     eduInfo:Record<eduType,string>,
     handleChange:(e:React.ChangeEvent<HTMLInputElement>)=>void
+    isActive:boolean
     toggleEdu:(e:React.MouseEvent<HTMLButtonElement,MouseEvent>)=>void
     delEdu:(e:React.MouseEvent<HTMLButtonElement,MouseEvent>)=>void
 }
-function EduSection({eduInfo, handleChange, toggleEdu, delEdu}:eduProps): JSX.Element {
+function EduSection({eduInfo, handleChange, isActive, toggleEdu, delEdu}:eduProps): JSX.Element {
   return (
     <div id={eduInfo.id}className="eduSection">
       <div className="flexRow">
@@ -17,7 +18,7 @@ function EduSection({eduInfo, handleChange, toggleEdu, delEdu}:eduProps): JSX.El
             <button className="delete" onClick={(e)=>{delEdu(e)}}></button>
         </div>
       </div>
-      <div className="inputSect" hidden={true}>
+      <div className="inputSect" hidden={!isActive}>
         <Input
             title="School"
             value={eduInfo.school}

@@ -14,8 +14,8 @@ function Section({ sectionName = "", inputs, addNew, toggleSection }: SectionPro
         toggleSection(e);
       }}>
         <h2>{sectionName}:</h2>
-        <img hidden={true} src="/down.png" style={{ height: "1.5em"}}></img>
-        <img hidden={false} src="/up.png" style={{ height: "1.5em"}}></img>
+        <img hidden={false} src="/down.png" style={{ height: "1.5em"}}></img>
+        <img hidden={true} src="/up.png" style={{ height: "1.5em"}}></img>
       </button>
       <div hidden={true}>
         <div className="inputSections">
