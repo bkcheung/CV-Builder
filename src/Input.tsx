@@ -2,10 +2,11 @@ interface InputProps {
   title: string,
   value: string,
   id: string,
+  type: string,
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-function Input({ title,value,id,handleChange }: InputProps): JSX.Element {
+function Input({ title,value,id,type,handleChange}: InputProps): JSX.Element {
   return (
     <div className="inputField">
       <h3>{title}:</h3>
@@ -13,6 +14,7 @@ function Input({ title,value,id,handleChange }: InputProps): JSX.Element {
         id={id}
         defaultValue={value}
         onChange={handleChange}
+        type={type}
       ></input>
     </div>
   );

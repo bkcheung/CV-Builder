@@ -13,24 +13,28 @@ function InfoSection({pInfo, handleChange}:infoProps): JSX.Element {
         title="Name"
         id={'name'}
         value={pInfo.name}
+        type='text'
         handleChange={handleChange}>
       </Input>
       <Input 
         title="Email"
         id={'email'}
         value={pInfo.email}
+        type='text'
         handleChange={handleChange}>
       </Input>
       <Input 
         title="Number"
         id={'number'}
         value={pInfo.number}
+        type='text'
         handleChange={handleChange}>
       </Input>
       <Input 
         title="Location"
         id={'address'}
         value={pInfo.address}
+        type='text'
         handleChange={handleChange}>
       </Input>
     </form>

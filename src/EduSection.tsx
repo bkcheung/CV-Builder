@@ -23,30 +23,35 @@ function EduSection({eduInfo, handleChange, isActive, toggleEdu, delEdu}:eduProp
             title="School"
             value={eduInfo.school}
             id='school'
+            type='text'
             handleChange={handleChange}
         ></Input>
             <Input
             title="Degree"
             value={eduInfo.degree}
             id='degree'
+            type='text'
             handleChange={handleChange}
         ></Input>
             <Input
             title="Start Date"
             value={eduInfo.start}
             id='start'
+            type='month'
             handleChange={handleChange}
         ></Input>
             <Input
             title="End Date"
             value={eduInfo.end}
             id='end'
+            type='month'
             handleChange={handleChange}
         ></Input>
             <Input
             title="Location"
             value={eduInfo.location}
             id='location'
+            type='text'
             handleChange={handleChange}
         ></Input>
         <div>
