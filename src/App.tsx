@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { v4 as uuid } from 'uuid';
 import InfoSection from "./InfoSection.tsx";
 import { defPInfo, defEducations } from "./data.ts";
@@ -7,9 +7,18 @@ import Section from "./Section.tsx";
 import EduSection from "./EduSection.tsx";
 
 function App(): JSX.Element {
-  const [pInfo,setPInfo] = useState(defPInfo);
+  //set up storage, if exists, use that as default, if not, use default info
+  const pInfoStore = localStorage.getItem('pInfo')!==null?
+                     (JSON.parse(localStorage.getItem('pInfo')!)):defPInfo;
+  const [pInfo,setPInfo] = useState(pInfoStore);
   const [eduInfo, setEduInfo] = useState(defEducations);
   const [activeEdu, setActiveEdu] = useState('');
+
+  //update storage
+  useEffect(()=>{
+    localStorage.setItem('pInfo',JSON.stringify(pInfo));
+    // console.log(JSON.stringify(pInfo));
+  },[pInfo])
 
   //generate sections
   const eduSections = eduInfo.map((edu)=>{
