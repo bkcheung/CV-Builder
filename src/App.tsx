@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { v4 as uuid } from 'uuid';
 import InfoSection from "./InfoSection.tsx";
-import { defPInfo, defEducations } from "./data.ts";
+import { defPInfo, defEducations, eduType } from "./data.ts";
 import CV from "./CV.tsx";
 import Section from "./Section.tsx";
 import EduSection from "./EduSection.tsx";
@@ -22,7 +22,7 @@ function App(): JSX.Element {
     localStorage.setItem('eduInfo',JSON.stringify(eduInfo));
   },[eduInfo])
   //generate sections
-  const eduSections = eduInfo.map((edu)=>{
+  const eduSections = eduInfo.map((edu:Record<eduType,string>)=>{
     return(
       <EduSection
         key={edu.id}
@@ -70,7 +70,7 @@ function App(): JSX.Element {
       const tar = e.target as HTMLElement;
       const sectID = tar.closest('div.eduSection')?.id;
       const mod = structuredClone(eduInfo);
-      const index = mod.findIndex((edu)=>edu.id===sectID);
+      const index = mod.findIndex((edu:Record<eduType,string>)=>edu.id===sectID);
       mod.splice(index,1)
       setEduInfo(mod);
   }
