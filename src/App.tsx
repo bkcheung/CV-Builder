@@ -7,19 +7,20 @@ import Section from "./Section.tsx";
 import EduSection from "./EduSection.tsx";
 
 function App(): JSX.Element {
-  //set up storage, if exists, use that as default, if not, use default info
   const pInfoStore = localStorage.getItem('pInfo')!==null?
                      (JSON.parse(localStorage.getItem('pInfo')!)):defPInfo;
+  const eduStore = localStorage.getItem('eduInfo')!==null?
+                     (JSON.parse(localStorage.getItem('eduInfo')!)):defEducations;
   const [pInfo,setPInfo] = useState(pInfoStore);
-  const [eduInfo, setEduInfo] = useState(defEducations);
+  const [eduInfo, setEduInfo] = useState(eduStore);
   const [activeEdu, setActiveEdu] = useState('');
-
   //update storage
   useEffect(()=>{
     localStorage.setItem('pInfo',JSON.stringify(pInfo));
-    // console.log(JSON.stringify(pInfo));
   },[pInfo])
-
+  useEffect(()=>{
+    localStorage.setItem('eduInfo',JSON.stringify(eduInfo));
+  },[eduInfo])
   //generate sections
   const eduSections = eduInfo.map((edu)=>{
     return(
