@@ -1,41 +1,111 @@
-import { FormProvider, useForm } from "react-hook-form";
-import { defaultData } from "./data.ts";
+import { useState, useEffect } from "react";
+import { v4 as uuid } from 'uuid';
+import InfoSection from "./InfoSection.tsx";
+import { defPInfo, defEducations, eduType } from "./data.ts";
 import CV from "./CV.tsx";
 import Section from "./Section.tsx";
-import InfoSection from "./InfoSection.tsx";
 import EduSection from "./EduSection.tsx";
 
-
 function App(): JSX.Element {
-const methods = useForm({defaultValues: defaultData});
-
-  const sections = 
-      <>
-        <InfoSection key={0}></InfoSection>
-        <Section
-            key={5}
-            sectionName={'Education'}
-            inputs = {<EduSection></EduSection>}
-        />
-      </>
-
+  const pInfoStore = localStorage.getItem('pInfo')!==null?
+                     (JSON.parse(localStorage.getItem('pInfo')!)):defPInfo;
+  const eduStore = localStorage.getItem('eduInfo')!==null?
+                     (JSON.parse(localStorage.getItem('eduInfo')!)):defEducations;
+  const [pInfo,setPInfo] = useState(pInfoStore);
+  const [eduInfo, setEduInfo] = useState(eduStore);
+  const [activeEdu, setActiveEdu] = useState('');
+  //update storage
+  useEffect(()=>{
+    localStorage.setItem('pInfo',JSON.stringify(pInfo));
+  },[pInfo])
+  useEffect(()=>{
+    localStorage.setItem('eduInfo',JSON.stringify(eduInfo));
+  },[eduInfo])
+  //generate sections
+  const eduSections = eduInfo.map((edu:Record<eduType,string>)=>{
+    return(
+      <EduSection
+        key={edu.id}
+        eduInfo={edu}
+        handleChange={eduChange}
+        isActive={activeEdu===edu.id}
+        toggleEdu={(e:React.MouseEvent<HTMLButtonElement,MouseEvent>)=>{
+          e.preventDefault();
+          {(activeEdu===edu.id)? setActiveEdu('') : setActiveEdu(edu.id)}}}
+        delEdu={delEdu}
+      ></EduSection>
+    )})
+  //functions to handle user changes  
+  function pInfoChange(e:React.ChangeEvent<HTMLInputElement>){
+    const id = e.target.id;
+    setPInfo({...pInfo,[id]:e.target.value})
+  }
+  function eduChange(e:React.ChangeEvent<HTMLInputElement>){
+    const sectID = e.target.closest('div.eduSection')?.id;
+    const id = e.target.id;
+    const mod = structuredClone(eduInfo); //to avoid modifying states directly
+    for(let i=0; i<mod.length;i++){
+      if(mod[i].id===sectID){
+        mod[i]={...mod[i],[id]:e.target.value};
+      }
+      setEduInfo(mod);
+    }
+  }
+  function toggleSection(e:React.MouseEvent<HTMLButtonElement, MouseEvent>){
+    e.preventDefault();
+    const tar = e.target as HTMLElement;
+    const form = tar.closest('form');
+    if(form!==null){
+        const imgs = form?.querySelectorAll('img');
+        for(let i=0;i<2;i++){
+            imgs[i].toggleAttribute('hidden');
+        }
+        if(form.querySelector('div')!==null){
+            form.querySelector('div')?.toggleAttribute('hidden');
+        }
+    }
+  }
+  function delEdu(e:React.MouseEvent<HTMLButtonElement, MouseEvent>){
+      e.preventDefault();
+      const tar = e.target as HTMLElement;
+      const sectID = tar.closest('div.eduSection')?.id;
+      const mod = structuredClone(eduInfo);
+      const index = mod.findIndex((edu:Record<eduType,string>)=>edu.id===sectID);
+      mod.splice(index,1)
+      setEduInfo(mod);
+  }
+  function addEdu(e:React.MouseEvent<HTMLButtonElement,MouseEvent>){
+    e.preventDefault();
+    const newEducation ={
+      school: "",
+      degree: "",
+      start: "",
+      end: "",
+      location: "",
+      id: uuid(),
+    };
+    const newEdus=structuredClone(eduInfo);
+    newEdus.push(newEducation);
+    setEduInfo(newEdus);
+    setActiveEdu(newEducation.id);
+  }
   return (
     <div className="page">
       <div className="inputSections">
-        <FormProvider key={123} {...methods}>{sections}</FormProvider>
-        </div>
-      <CV key={100}
-        props={{
-          name: methods.watch("name"),
-          email: methods.watch("email"),
-          number: methods.watch("number"),
-          address: methods.watch("address"),
-          school: methods.watch("school"),
-          degree: methods.watch("degree"),
-          start: methods.watch("start"),
-          end: methods.watch("end"),
-          location: methods.watch("location"),
-        }}
+        <InfoSection 
+          pInfo={pInfo}
+          handleChange={pInfoChange}
+        ></InfoSection>
+        <Section
+          sectionName="Education"
+          inputs={eduSections}
+          addNew={addEdu}
+          toggleSection={toggleSection}
+        ></Section>
+      </div>
+      <CV
+        pInfo = {pInfo}
+        eduInfo = {eduInfo}
       ></CV>
     </div>
   );
