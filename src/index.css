@@ -39,7 +39,6 @@ button{
   flex-direction: column;
   background: rgba(255, 255, 255, 0.5);
   padding: 1em;
-  margin-bottom:0.25em;
   border: 1px outset #ffffff80;
   border-radius: 0.5em;
   cursor: move;
@@ -54,7 +53,7 @@ button{
   transition: all 0.2s ease-in-out;
 }
 .hideDrop{
-  height:5px;
+  height:0.75em;
   opacity: 0;
 }
 .icon{
