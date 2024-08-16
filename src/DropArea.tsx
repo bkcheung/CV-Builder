@@ -1,13 +1,14 @@
 import { useState } from "react";
 interface dropAreaProps{
     id:number
+    activeCard:string
 }
 
-function DropArea({id}:dropAreaProps){
+function DropArea({id, activeCard}:dropAreaProps){
     const [showDrop, setShowDrop] = useState(false);
     function onDrop(e: React.DragEvent<HTMLDivElement>){
         const dragArea = e.target as HTMLElement;
-        console.log(dragArea.getAttribute('id'));
+        console.log(`${activeCard} is dragged to area ${dragArea.getAttribute('id')}`);
         setShowDrop(false);
     }
     return(
