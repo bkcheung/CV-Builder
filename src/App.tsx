@@ -5,6 +5,8 @@ import { defPInfo, defEducations, eduType } from "./data.ts";
 import CV from "./CV.tsx";
 import Section from "./Section.tsx";
 import EduSection from "./EduSection.tsx";
+import DropArea from "./DropArea.tsx";
+
 
 function App(): JSX.Element {
   const pInfoStore = localStorage.getItem('pInfo')!==null?
@@ -14,6 +16,7 @@ function App(): JSX.Element {
   const [pInfo,setPInfo] = useState(pInfoStore);
   const [eduInfo, setEduInfo] = useState(eduStore);
   const [activeEdu, setActiveEdu] = useState('');
+  const [activeCard, setActiveCard] = useState('');
   //update storage
   useEffect(()=>{
     localStorage.setItem('pInfo',JSON.stringify(pInfo));
@@ -22,18 +25,23 @@ function App(): JSX.Element {
     localStorage.setItem('eduInfo',JSON.stringify(eduInfo));
   },[eduInfo])
   //generate sections
-  const eduSections = eduInfo.map((edu:Record<eduType,string>)=>{
+  const eduSections = eduInfo.map((edu:Record<eduType,string>, index:number)=>{
+    const initialDrop = index===0?<DropArea id={index} />:null;
     return(
-      <EduSection
-        key={edu.id}
-        eduInfo={edu}
-        handleChange={eduChange}
-        isActive={activeEdu===edu.id}
-        toggleEdu={(e:React.MouseEvent<HTMLButtonElement,MouseEvent>)=>{
-          e.preventDefault();
-          {(activeEdu===edu.id)? setActiveEdu('') : setActiveEdu(edu.id)}}}
-        delEdu={delEdu}
-      ></EduSection>
+      <section key={edu.id}> 
+        {initialDrop}
+        <EduSection
+          eduInfo={edu}
+          handleChange={eduChange}
+          isActive={activeEdu===edu.id}
+          toggleEdu={(e:React.MouseEvent<HTMLButtonElement,MouseEvent>)=>{
+            e.preventDefault();
+            {(activeEdu===edu.id)? setActiveEdu('') : setActiveEdu(edu.id)}}}
+          delEdu={delEdu}
+          setActiveCard={setActiveCard}
+        ></EduSection>
+        <DropArea id={index+1}/>
+      </section>
     )})
   //functions to handle user changes  
   function pInfoChange(e:React.ChangeEvent<HTMLInputElement>){
@@ -96,6 +104,9 @@ function App(): JSX.Element {
           pInfo={pInfo}
           handleChange={pInfoChange}
         ></InfoSection>
+
+        <h3>Active Card: {activeCard}</h3> 
+
         <Section
           sectionName="Education"
           inputs={eduSections}

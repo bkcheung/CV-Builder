@@ -1,16 +1,22 @@
 import Input from "./Input";
 import { eduType } from "./data";
 
+
 interface eduProps{
     eduInfo:Record<eduType,string>,
     handleChange:(e:React.ChangeEvent<HTMLInputElement>)=>void
     isActive:boolean
     toggleEdu:(e:React.MouseEvent<HTMLButtonElement,MouseEvent>)=>void
     delEdu:(e:React.MouseEvent<HTMLButtonElement,MouseEvent>)=>void
+    setActiveCard:React.Dispatch<React.SetStateAction<string>>;
 }
-function EduSection({eduInfo, handleChange, isActive, toggleEdu, delEdu}:eduProps): JSX.Element {
+
+function EduSection({eduInfo, handleChange, isActive, toggleEdu, delEdu, setActiveCard}:eduProps): JSX.Element {
   return (
-    <div id={eduInfo.id}className="eduSection">
+    <div id={eduInfo.id}className="eduSection" draggable={true} 
+         onDragStart={()=>setActiveCard(eduInfo.id)}
+         onDragEnd={()=>setActiveCard('')}
+         >
       <div className="flexRow">
         <div style={{fontWeight:500}}>{eduInfo.school}</div>
         <div>

@@ -19,7 +19,7 @@ function Section({ sectionName = "", inputs, addNew, toggleSection }: SectionPro
       </button>
       <div hidden={true}>
         <div className="inputSections">
-          {inputs}
+            {inputs}
           <button className="add" onClick={(e)=>addNew(e)}>Add New</button>
         </div>
       </div>
