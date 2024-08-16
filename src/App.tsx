@@ -7,12 +7,13 @@ import Section from "./Section.tsx";
 import EduSection from "./EduSection.tsx";
 import DropArea from "./DropArea.tsx";
 
-
 function App(): JSX.Element {
+  //get from storage or use default values
   const pInfoStore = localStorage.getItem('pInfo')!==null?
                      (JSON.parse(localStorage.getItem('pInfo')!)):defPInfo;
   const eduStore = localStorage.getItem('eduInfo')!==null?
                      (JSON.parse(localStorage.getItem('eduInfo')!)):defEducations;
+  //state vars
   const [pInfo,setPInfo] = useState(pInfoStore);
   const [eduInfo, setEduInfo] = useState(eduStore);
   const [activeEdu, setActiveEdu] = useState('');
@@ -26,7 +27,7 @@ function App(): JSX.Element {
   },[eduInfo])
   //generate sections
   const eduSections = eduInfo.map((edu:Record<eduType,string>, index:number)=>{
-    const initialDrop = index===0?<DropArea id={index} />:null;
+    const initialDrop = index===0?<DropArea id={index} activeCard={activeCard}/>:null;
     return(
       <section key={edu.id}> 
         {initialDrop}
@@ -40,7 +41,7 @@ function App(): JSX.Element {
           delEdu={delEdu}
           setActiveCard={setActiveCard}
         ></EduSection>
-        <DropArea id={index+1}/>
+        <DropArea id={index+1} activeCard={activeCard}/>
       </section>
     )})
   //functions to handle user changes  
@@ -104,9 +105,6 @@ function App(): JSX.Element {
           pInfo={pInfo}
           handleChange={pInfoChange}
         ></InfoSection>
-
-        <h3>Active Card: {activeCard}</h3> 
-
         <Section
           sectionName="Education"
           inputs={eduSections}
