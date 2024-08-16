@@ -18,6 +18,11 @@ function App(): JSX.Element {
   const [eduInfo, setEduInfo] = useState(eduStore);
   const [activeEdu, setActiveEdu] = useState('');
   const [activeCard, setActiveCard] = useState('');
+
+  function handleDrop(e: React.DragEvent<HTMLDivElement>){
+      const dragArea = e.target as HTMLElement;
+      console.log(`${activeCard} is dragged to area ${dragArea.getAttribute('id')}`);
+  }
   //update storage
   useEffect(()=>{
     localStorage.setItem('pInfo',JSON.stringify(pInfo));
@@ -27,7 +32,7 @@ function App(): JSX.Element {
   },[eduInfo])
   //generate sections
   const eduSections = eduInfo.map((edu:Record<eduType,string>, index:number)=>{
-    const initialDrop = index===0?<DropArea id={index} activeCard={activeCard}/>:null;
+    const initialDrop = index===0?<DropArea id={index} handleDrop={handleDrop}/>:null;
     return(
       <section key={edu.id}> 
         {initialDrop}
@@ -41,7 +46,7 @@ function App(): JSX.Element {
           delEdu={delEdu}
           setActiveCard={setActiveCard}
         ></EduSection>
-        <DropArea id={index+1} activeCard={activeCard}/>
+        <DropArea id={index+1} handleDrop={handleDrop}/>
       </section>
     )})
   //functions to handle user changes  
