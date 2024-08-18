@@ -21,12 +21,15 @@ function App(): JSX.Element {
 
   function handleDrop(e: React.DragEvent<HTMLDivElement>){
       const dragArea = e.target as HTMLElement;
-      const newIndex = dragArea.getAttribute('id');
+      const dropId = dragArea.getAttribute('id');
       //reorder array
-      const moveCard = eduInfo.filter((edu:Record<eduType,string>)=>edu.id===activeCard);
+      const oldIndex=eduInfo.findIndex((edu:Record<eduType,string>)=>edu.id===activeCard);
+      let newIndex;
+      if(dropId!==null){newIndex=dropId<oldIndex?Number(dropId):(Number(dropId)-1)}
+      const moveCard = eduInfo[oldIndex];
       const remainingCards = eduInfo.filter((edu:Record<eduType,string>)=>edu.id!==activeCard);
       let newOrder = remainingCards.splice(0,newIndex);
-      newOrder = [...newOrder, ...moveCard, ...remainingCards];
+      newOrder = [...newOrder, moveCard, ...remainingCards];
       setEduInfo(newOrder);
   }
   //update storage
