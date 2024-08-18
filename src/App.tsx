@@ -21,7 +21,13 @@ function App(): JSX.Element {
 
   function handleDrop(e: React.DragEvent<HTMLDivElement>){
       const dragArea = e.target as HTMLElement;
-      console.log(`${activeCard} is dragged to area ${dragArea.getAttribute('id')}`);
+      const newIndex = dragArea.getAttribute('id');
+      //reorder array
+      const moveCard = eduInfo.filter((edu:Record<eduType,string>)=>edu.id===activeCard);
+      const remainingCards = eduInfo.filter((edu:Record<eduType,string>)=>edu.id!==activeCard);
+      let newOrder = remainingCards.splice(0,newIndex);
+      newOrder = [...newOrder, ...moveCard, ...remainingCards];
+      setEduInfo(newOrder);
   }
   //update storage
   useEffect(()=>{
