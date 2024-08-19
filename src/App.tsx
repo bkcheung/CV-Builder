@@ -23,6 +23,7 @@ function App(): JSX.Element {
   const [activeEdu, setActiveEdu] = useState('');
   const [activeExp, setActiveExp] = useState('');
   const [activeCard, setActiveCard] = useState('');
+  const [activeSection, setActiveSection] = useState('');
   //update storage
   useEffect(() => {
     localStorage.setItem('pInfo', JSON.stringify(pInfo));
@@ -105,6 +106,7 @@ function App(): JSX.Element {
     e.preventDefault();
     const tar = e.target as HTMLElement;
     const form = tar.closest('form');
+    const id = String(form?.getAttribute('id'));
     if (form !== null) {
       const imgs = form?.querySelectorAll('img');
       for (let i = 0; i < 2; i++) {
@@ -113,6 +115,7 @@ function App(): JSX.Element {
       if (form.querySelector('div') !== null) {
         form.querySelector('div')?.toggleAttribute('hidden');
       }
+      (activeSection===id)?setActiveSection(''):setActiveSection(id);
     }
   }
   function delEdu(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
@@ -201,12 +204,14 @@ function App(): JSX.Element {
         <Section
           sectionName="Education"
           inputs={eduSections}
+          active={activeSection==='Education'}
           addNew={addEdu}
           toggleSection={toggleSection}
         ></Section>
         <Section
           sectionName="Experience"
           inputs={expSections}
+          active={activeSection==='Experience'}
           addNew={addExp}
           toggleSection={toggleSection}
         ></Section>
