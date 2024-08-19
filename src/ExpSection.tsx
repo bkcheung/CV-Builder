@@ -1,10 +1,9 @@
 import Input from "./Input";
 import { expType } from "./data";
 
-
 interface expProps{
     expInfo:Record<expType,string>,
-    handleChange:(e:React.ChangeEvent<HTMLInputElement>)=>void
+    handleChange:(e:React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>)=>void
     isActive:boolean
     toggleExp:(e:React.MouseEvent<HTMLButtonElement,MouseEvent>)=>void
     delExp:(e:React.MouseEvent<HTMLButtonElement,MouseEvent>)=>void
@@ -40,13 +39,6 @@ function ExpSection({expInfo, handleChange, isActive, toggleExp, delExp, setActi
             handleChange={handleChange}
         ></Input>
             <Input
-            title="Description"
-            value={expInfo.description}
-            id='description'
-            type='text'
-            handleChange={handleChange}
-        ></Input>
-            <Input
             title="Start Date"
             value={expInfo.start}
             id='start'
@@ -67,6 +59,23 @@ function ExpSection({expInfo, handleChange, isActive, toggleExp, delExp, setActi
             type='text'
             handleChange={handleChange}
         ></Input>
+        {/* <Input
+            title="Description"
+            value={expInfo.description}
+            id='description'
+            type='text'
+            handleChange={handleChange}
+        ></Input> */}
+        <div className="flex flex-col items-start">
+            <h3>Description:</h3>
+            <textarea
+            className="m-0 min-w-full"
+            id='description'
+            rows={3}
+            defaultValue={expInfo.description}
+            onChange={handleChange}
+            ></textarea>
+        </div>
         <div>
             <div style={{display: "flex", justifyContent:"center"}}>
                 <button onClick={(e)=>toggleExp(e)}>Done</button>

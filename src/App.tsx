@@ -35,7 +35,7 @@ function App(): JSX.Element {
   }, [expInfo])
   //generate sections
   const eduSections = eduInfo.map((edu: Record<eduType, string>, index: number) => {
-    const initialDrop = index === 0 ? <DropArea id={index} handleDrop={handleDrop} /> : null;
+    const initialDrop = index === 0 ? <DropArea id={index} handleDrop={handleEduDrop} /> : null;
     return (
       <section key={edu.id}>
         {initialDrop}
@@ -50,12 +50,12 @@ function App(): JSX.Element {
           delEdu={delEdu}
           setActiveCard={setActiveCard}
         ></EduSection>
-        <DropArea id={index + 1} handleDrop={handleDrop} />
+        <DropArea id={index + 1} handleDrop={handleEduDrop} />
       </section>
     )
   })
   const expSections = expInfo.map((exp: Record<expType, string>, index: number) => {
-    const initialDrop = index === 0 ? <DropArea id={index} handleDrop={handleDrop} /> : null;
+    const initialDrop = index === 0 ? <DropArea id={index} handleDrop={handleExpDrop} /> : null;
     return (
       <section key={exp.id}>
         {initialDrop}
@@ -70,7 +70,7 @@ function App(): JSX.Element {
           delExp={delExp}
           setActiveCard={setActiveCard}
         ></ExpSection>
-        <DropArea id={index + 1} handleDrop={handleDrop} />
+        <DropArea id={index + 1} handleDrop={handleExpDrop} />
       </section>
     )
   })
@@ -90,7 +90,7 @@ function App(): JSX.Element {
       setEduInfo(mod);
     }
   }
-  function expChange(e: React.ChangeEvent<HTMLInputElement>) {
+  function expChange(e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>) {
     const sectID = e.target.closest('div.subSection')?.id;
     const id = e.target.id;
     const mod = structuredClone(expInfo); //to avoid modifying states directly
@@ -164,8 +164,8 @@ function App(): JSX.Element {
     setExpInfo(newExps);
     setActiveExp(newExp.id);
   }
-  //Education and Experience Reordering
-  function handleDrop(e: React.DragEvent<HTMLDivElement>) {
+  //Reordering
+  function handleEduDrop(e: React.DragEvent<HTMLDivElement>) {
     const dragArea = e.target as HTMLElement;
     const dropId = dragArea.getAttribute('id');
     //reorder array
@@ -177,6 +177,19 @@ function App(): JSX.Element {
     let newOrder = remainingCards.splice(0, newIndex);
     newOrder = [...newOrder, moveCard, ...remainingCards];
     setEduInfo(newOrder);
+  }
+  function handleExpDrop(e: React.DragEvent<HTMLDivElement>) {
+    const dragArea = e.target as HTMLElement;
+    const dropId = dragArea.getAttribute('id');
+    //reorder array
+    const oldIndex = expInfo.findIndex((exp: Record<expType, string>) => exp.id === activeCard);
+    let newIndex;
+    if (dropId !== null) { newIndex = dropId < oldIndex ? Number(dropId) : (Number(dropId) - 1) }
+    const moveCard = expInfo[oldIndex];
+    const remainingCards = expInfo.filter((exp: Record<expType, string>) => exp.id !== activeCard);
+    let newOrder = remainingCards.splice(0, newIndex);
+    newOrder = [...newOrder, moveCard, ...remainingCards];
+    setExpInfo(newOrder);
   }
   return (
     <div className="page">
