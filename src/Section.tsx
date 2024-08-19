@@ -13,7 +13,7 @@ function Section({ sectionName = "", inputs, addNew, toggleSection }: SectionPro
       <button className="flexRow" onClick={(e)=>{
         toggleSection(e);
       }}>
-        <h2>{sectionName}:</h2>
+        <h2 className="text-xl font-medium">{sectionName}:</h2>
         <img hidden={false} src="/down.png" style={{ height: "1.5em"}}></img>
         <img hidden={true} src="/up.png" style={{ height: "1.5em"}}></img>
       </button>

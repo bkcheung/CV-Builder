@@ -18,7 +18,7 @@ function ExpSection({expInfo, handleChange, isActive, toggleExp, delExp, setActi
          onDragEnd={()=>setActiveCard('')}
          >
       <div className="flexRow">
-        <div style={{fontWeight:500}}>{expInfo.company}</div>
+        <div className="font-medium">{expInfo.company}</div>
         <div>
             <button className="edit" onClick={(e)=>{toggleExp(e)}}></button>
             <button className="delete" onClick={(e)=>{delExp(e)}}></button>

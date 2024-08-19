@@ -8,7 +8,7 @@ interface infoProps{
 function InfoSection({pInfo, handleChange}:infoProps): JSX.Element {
   return (
     <form className="section">
-      <h2>Personal Details:</h2>
+      <h2 className="text-xl font-medium">Personal Details:</h2>
       <Input 
         title="Name"
         id={'name'}

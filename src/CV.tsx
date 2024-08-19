@@ -24,7 +24,6 @@ export default function CV({ pInfo, eduInfo, expInfo }:cvProps): JSX.Element {
         <div className="flexRow">
           <div className="cvContact">
             <img src="/mail.png" style={{ height: "1em" }}></img>
-            {/* <div style={{ marginLeft: 5 }}>{pInfo.email}</div> */}
             <div className="ml-1">{pInfo.email}</div>
           </div>
           <div className="cvContact">
