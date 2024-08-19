@@ -18,16 +18,16 @@ function EduCV({eduInfo}:eduProps): JSX.Element {
        
           <div className="flexRow">
             <div className="flexCol">
-              <div className="edu" style={{ fontWeight: 500 }}>
+              <div className="cvContent" style={{ fontWeight: 500 }}>
                 {eduInfo.degree}
               </div>
-              <div className="edu">{eduInfo.school}</div>
+              <div className="cvContent">{eduInfo.school}</div>
             </div>
-            <div className="flexCol">
+            <div className="flexCol rightAlign">
               <i>
-                <div className="edu">{start} - {end}</div>
+                <div className="cvContent">{start} - {end}</div>
               </i>
-              <div className="edu">{eduInfo.location}</div>
+              <div className="cvContent">{eduInfo.location}</div>
             </div>
           </div>
     )}
