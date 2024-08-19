@@ -1,17 +1,22 @@
-import { pInfoType, eduType } from "./data";
+import { pInfoType, eduType, expType } from "./data";
 import EduCV from "./EduCV";
+import ExpCV from "./ExpCV";
 
 interface cvProps{
   pInfo: Record<pInfoType,string>
   eduInfo: Record<eduType,string>[]
+  expInfo: Record<expType,string>[]
 }
 
-export default function CV({ pInfo, eduInfo }:cvProps): JSX.Element {
+export default function CV({ pInfo, eduInfo, expInfo }:cvProps): JSX.Element {
   const educations = eduInfo.map((edu)=>{
     return(
       <EduCV key={edu.id} eduInfo={edu}></EduCV>
     )});
-
+  const experiences = expInfo.map((exp)=>{
+    return(
+      <ExpCV key={exp.id} expInfo={exp}></ExpCV>
+    )});
   return (
     <div className="CV">
       <div className="cvHeader">
@@ -35,6 +40,8 @@ export default function CV({ pInfo, eduInfo }:cvProps): JSX.Element {
         <div className="education">
             <div className="sectionHeader">Education</div>
             {educations}
+            <div className="sectionHeader">Experience</div>
+            {experiences}
         </div>
       </div>
     </div>
