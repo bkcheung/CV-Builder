@@ -13,7 +13,7 @@ interface expProps{
 
 function ExpSection({expInfo, handleChange, isActive, toggleExp, delExp, setActiveCard}:expProps): JSX.Element {
   return (
-    <div id={expInfo.id}className="eduSection" draggable={true} 
+    <div id={expInfo.id}className="subSection" draggable={true} 
          onDragStart={()=>setActiveCard(expInfo.id)}
          onDragEnd={()=>setActiveCard('')}
          >

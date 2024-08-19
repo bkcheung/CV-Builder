@@ -13,7 +13,7 @@ interface eduProps{
 
 function EduSection({eduInfo, handleChange, isActive, toggleEdu, delEdu, setActiveCard}:eduProps): JSX.Element {
   return (
-    <div id={eduInfo.id}className="eduSection" draggable={true} 
+    <div id={eduInfo.id}className="subSection" draggable={true} 
          onDragStart={()=>setActiveCard(eduInfo.id)}
          onDragEnd={()=>setActiveCard('')}
          >
