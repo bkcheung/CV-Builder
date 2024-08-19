@@ -59,13 +59,6 @@ function ExpSection({expInfo, handleChange, isActive, toggleExp, delExp, setActi
             type='text'
             handleChange={handleChange}
         ></Input>
-        {/* <Input
-            title="Description"
-            value={expInfo.description}
-            id='description'
-            type='text'
-            handleChange={handleChange}
-        ></Input> */}
         <div className="flex flex-col items-start">
             <h3>Description:</h3>
             <textarea
