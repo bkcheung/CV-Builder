@@ -7,7 +7,6 @@ interface cvProps{
   eduInfo: Record<eduType,string>[]
   expInfo: Record<expType,string>[]
 }
-
 export default function CV({ pInfo, eduInfo, expInfo }:cvProps): JSX.Element {
   const educations = eduInfo.map((edu)=>{
     return(
@@ -20,29 +19,27 @@ export default function CV({ pInfo, eduInfo, expInfo }:cvProps): JSX.Element {
   return (
     <div className="CV">
       <div className="cvHeader">
-        <div id="cvName">{pInfo.name}</div>
-        <div className="flexRow">
-          <div className="cvContact">
-            <img src="/mail.png" style={{ height: "1em" }}></img>
+       <div className="text-3xl mb-2">{pInfo.name}</div>
+        <div className="flex justify-between items-center">
+          <div className="flex">
+            <img className="h-4" src="/mail.png"></img>
             <div className="ml-1">{pInfo.email}</div>
           </div>
-          <div className="cvContact">
-            <img src="/telephone.png" style={{ height: "1em" }}></img>
+          <div className="flex">
+            <img className="h-4" src="/telephone.png"></img>
             <div className="ml-1">{pInfo.number}</div>
           </div>
-          <div className="cvContact">
-            <img src="/location.png" style={{ height: "1em" }}></img>
+          <div className="flex">
+            <img className="h-4" src="/location.png"></img>
             <div className="ml-1">{pInfo.address}</div>
           </div>
         </div>
       </div>
-      <div className="cvBody">
-        <div className="education">
-            <div className="sectionHeader">Education</div>
-            {educations}
-            <div className="sectionHeader">Experience</div>
-            {experiences}
-        </div>
+      <div className="p-6 pt-2">
+        <div className="sectionHeader">Education</div>
+        {educations}
+        <div className="sectionHeader">Experience</div>
+        {experiences}
       </div>
     </div>
   );

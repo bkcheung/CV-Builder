@@ -195,8 +195,8 @@ function App(): JSX.Element {
     setExpInfo(newOrder);
   }
   return (
-    <div className="page">
-      <div className="inputSections">
+    <div className="flex">
+      <div className="flex flex-col">
         <InfoSection
           pInfo={pInfo}
           handleChange={pInfoChange}

@@ -1,7 +1,6 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-
 :root {
   font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -21,19 +20,12 @@ button{
   border:none;
   background: none;
 }
-.page{
-  display: flex;
-}
-.inputSections{
-  display: flex;
-  flex-direction: column;
-}
 .section{
   display: flex;
   flex-direction: column;
   background: linear-gradient(to right, rgb(255 255 255 / 50%), rgb(195 218 252/75%));
   margin: 2em 2em 0em 2em;
-  padding: 2em;
+  padding: 1.5em;
   border: 1px outset #a4a4a49e;
   border-radius: 1em;
   box-shadow: 2px 2px 10px #00000033
@@ -73,7 +65,7 @@ button{
   background-repeat: no-repeat;
   width: 1.5em;
   height: 1.5em;
-  margin: 0xp 5px;
+  margin: 0px 5px;
 }
 .delete{
   background-image: url('/delete.png');
@@ -112,22 +104,17 @@ input {
   flex-direction: column;
   background: white;
   margin: 2em;
-  width: 50vw;
+  min-width: 450px;
+  width: 40rem;
+  height: calc(40rem * 11/8.5);
   box-shadow: 2px 2px 10px #00000033;
 }
 .cvHeader{
   background-color: rgb(195 218 252);
-  padding: 2em;
+  padding: 1.75em;
   display: flex;
   flex-direction: column;
   text-align: center;
-}
-#cvName{
-  font-size: 2em;
-  margin-bottom: 0.5em;
-}
-.cvContact{
-  display: flex;
 }
 .flexRow{
   display: flex;
@@ -135,9 +122,6 @@ input {
 }
 .rightAlign{
   text-align: right;
-}
-.cvBody{
-  padding: 0.5em 1.5em 1.5em 1.5em;
 }
 .sectionHeader{
   background-color: #e5ecf6;
