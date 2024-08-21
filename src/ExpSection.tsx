@@ -16,14 +16,14 @@ function ExpSection({expInfo, handleChange, isActive, toggleExp, delExp, setActi
          onDragStart={()=>setActiveCard(expInfo.id)}
          onDragEnd={()=>setActiveCard('')}
          >
-      <div className="flexRow">
-        <div className="font-medium">{expInfo.company}</div>
-        <div>
+      <div className="flex justify-between">
+        <div className="font-medium text-base">{expInfo.company}</div>
+        <div className="flex items-center">
             <button className="edit" onClick={(e)=>{toggleExp(e)}}></button>
             <button className="delete" onClick={(e)=>{delExp(e)}}></button>
         </div>
       </div>
-      <div className="inputSect" hidden={!isActive}>
+      <div hidden={!isActive}>
         <Input
             title="Company"
             value={expInfo.company}
@@ -70,8 +70,8 @@ function ExpSection({expInfo, handleChange, isActive, toggleExp, delExp, setActi
             ></textarea>
         </div>
         <div>
-            <div style={{display: "flex", justifyContent:"center"}}>
-                <button onClick={(e)=>toggleExp(e)}>Done</button>
+            <div className="flex justify-center">
+                <button className="mt-4" onClick={(e)=>toggleExp(e)}>Done</button>
             </div> 
         </div>
       </div>

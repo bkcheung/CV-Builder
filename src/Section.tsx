@@ -11,7 +11,7 @@ interface SectionProps {
 function Section({ sectionName = "", inputs, active, addNew, toggleSection }: SectionProps): JSX.Element {
   return (
     <form className="section" id={sectionName}>
-      <button className="flexRow" onClick={(e)=>{
+      <button className="flex justify-between" onClick={(e)=>{
         toggleSection(e);
       }}>
         <h2 className="text-xl font-medium">{sectionName}:</h2>
@@ -19,8 +19,8 @@ function Section({ sectionName = "", inputs, active, addNew, toggleSection }: Se
         <img hidden={!active} src="/up.png" style={{ height: "1.5em"}}></img>
       </button>
       <div hidden={!active}>
-        <div className="inputSections">
-            {inputs}
+        <div className="flex flex-col">
+          {inputs}
           <button className="add" onClick={(e)=>addNew(e)}>Add New</button>
         </div>
       </div>

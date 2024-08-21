@@ -22,21 +22,21 @@ function ExpCV({expInfo}:expProps): JSX.Element {
   })
     return(
        <div>
-          <div className="flexRow">
+          <div className="flex justify-between">
             <div className="flexCol">
-              <div className="cvContent" style={{ fontWeight: 500 }}>
+              <div className="p-1 text-sm" style={{ fontWeight: 500 }}>
                 {expInfo.title}
               </div>
-              <div className="cvContent">{expInfo.company}</div>
+              <div className="p-1 text-sm">{expInfo.company}</div>
             </div>
-            <div className="flexCol rightAlign">
+            <div className="flexCol text-right">
               <i>
-                <div className="cvContent">{start} - {end}</div>
+                <div className="p-1 text-sm">{start} - {end}</div>
               </i>
-              <div className="cvContent">{expInfo.location}</div>
+              <div className="p-1 text-sm">{expInfo.location}</div>
             </div>
           </div>
-          <div className="cvContent desc">{descList}</div>
+          <div className="p-1 text-sm">{descList}</div>
        </div>
           
     )}

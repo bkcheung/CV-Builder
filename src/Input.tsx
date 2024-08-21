@@ -8,7 +8,7 @@ interface InputProps {
 
 function Input({ title,value,id,type,handleChange}: InputProps): JSX.Element {
   return (
-    <div className="inputField">
+    <div className="flex items-center">
       <h3>{title}:</h3>
       <input
         id={id}

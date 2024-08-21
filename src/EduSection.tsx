@@ -17,9 +17,9 @@ function EduSection({eduInfo, handleChange, isActive, toggleEdu, delEdu, setActi
          onDragStart={()=>setActiveCard(eduInfo.id)}
          onDragEnd={()=>setActiveCard('')}
          >
-      <div className="flexRow">
-        <div style={{fontWeight:500}}>{eduInfo.school}</div>
-        <div>
+      <div className="flex justify-between mb-2">
+        <div className="font-medium text-base">{eduInfo.school}</div>
+        <div className="flex items-center">
             <button className="edit" onClick={(e)=>{toggleEdu(e)}}></button>
             <button className="delete" onClick={(e)=>{delEdu(e)}}></button>
         </div>
