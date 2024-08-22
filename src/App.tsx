@@ -24,7 +24,7 @@ function App(): JSX.Element {
   const [activeEdu, setActiveEdu] = useState('');
   const [activeExp, setActiveExp] = useState('');
   const [activeCard, setActiveCard] = useState('');
-  const [activeSection, setActiveSection] = useState('');
+  const [activeSection, setActiveSection] = useState('Experience');
   //update storage
   useEffect(() => {
     localStorage.setItem('pInfo', JSON.stringify(pInfo));
@@ -198,7 +198,6 @@ function App(): JSX.Element {
   // save to PDF
   const options:Options = {
     method: "open",
-    filename: `${pInfo.name}-CV.pdf`,
     resolution: Resolution.HIGH,
     page: {
       format: "letter",
@@ -237,8 +236,11 @@ function App(): JSX.Element {
           eduInfo={eduInfo}
           expInfo={expInfo}
         ></CV>
-        <button className="h-12 m-8 ml-0 p-2 bg-white bg-opacity-30 rounded-lg"onClick={()=>savePDF()}>
-          <img src="/download.png" className="h-8"></img>
+        <button 
+          className="flex align-middle h-12 m-8 ml-0 p-4 bg-white bg-opacity-30 rounded-lg"
+          onClick={()=>savePDF()}
+          title="Download">
+          <img src="/download.png" className="h-6"></img>
         </button>
     </div>
   );

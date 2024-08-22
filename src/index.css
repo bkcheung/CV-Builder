@@ -99,7 +99,7 @@ input {
   display: flex;
   flex-direction: column;
   background: white;
-  margin: 2em;
+  margin: 2em 2em 2em 0em;
   width: 820px;
   min-width: 450px;
   min-height: 1037.88px;
