@@ -24,8 +24,8 @@ function Section({
         }}
       >
         <h2 className="text-xl font-medium">{sectionName}:</h2>
-        <img hidden={active} src="/down.png" style={{ height: "1.5em" }}></img>
-        <img hidden={!active} src="/up.png" style={{ height: "1.5em" }}></img>
+        <div hidden={active} className="down icon"></div>
+        <div hidden={!active} className="up icon"></div>
       </button>
       <div hidden={!active}>
         <div className="flex flex-col">

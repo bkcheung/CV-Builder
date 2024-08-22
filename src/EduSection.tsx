@@ -30,13 +30,13 @@ function EduSection({
         <div className="font-medium text-base">{eduInfo.school}</div>
         <div className="flex items-center">
           <button
-            className="edit"
+            className="edit icon"
             onClick={(e) => {
               toggleEdu(e);
             }}
           ></button>
           <button
-            className="delete"
+            className="delete icon"
             onClick={(e) => {
               delEdu(e);
             }}

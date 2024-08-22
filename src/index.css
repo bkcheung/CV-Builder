@@ -62,24 +62,25 @@ input {
   background-position: center;
   background-repeat: no-repeat;
   width: 1.5em;
+  height: 1.5em;
 }
 .edit{
   background-image: url('/edit.png');
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 1.5em;
-  height: 1.5em;
   margin: 0px 5px;
 }
 .delete{
   background-image: url('/delete.png');
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 1.5em;
-  height: 1.5em;
   margin:0px 5px;
+}
+.up{
+  background-image: url("/up.png");
+}
+.down{
+  background-image: url("/down.png");
+}
+.download{
+  background-image: url("/download.png");
+  align-self: center;
 }
 .sectButton{
   border: none;

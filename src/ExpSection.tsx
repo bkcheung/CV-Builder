@@ -32,13 +32,13 @@ function ExpSection({
         <div className="font-medium text-base">{expInfo.company}</div>
         <div className="flex items-center">
           <button
-            className="edit"
+            className="edit icon"
             onClick={(e) => {
               toggleExp(e);
             }}
           ></button>
           <button
-            className="delete"
+            className="delete icon"
             onClick={(e) => {
               delExp(e);
             }}

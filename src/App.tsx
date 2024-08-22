@@ -126,10 +126,13 @@ function App(): JSX.Element {
     const tar = e.target as HTMLElement;
     const form = tar.closest("form");
     const id = String(form?.getAttribute("id"));
+    const button = form?.querySelector("button");
     if (form !== null) {
-      const imgs = form?.querySelectorAll("img");
-      for (let i = 0; i < 2; i++) {
-        imgs[i].toggleAttribute("hidden");
+      const icons = button?.getElementsByClassName("icon");
+      if(icons!==undefined){
+        for (let i = 0; i < 2; i++) {
+          icons[i].toggleAttribute("hidden");
+        }
       }
       if (form.querySelector("div") !== null) {
         form.querySelector("div")?.toggleAttribute("hidden");
@@ -255,7 +258,7 @@ function App(): JSX.Element {
         onClick={() => savePDF()}
         title="Download"
       >
-        <img src="/download.png" className="h-6"></img>
+        <div className="download icon"></div>
       </button>
     </div>
   );
