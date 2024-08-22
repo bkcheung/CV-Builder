@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { v4 as uuid } from "uuid";
-import InfoSection from "./InfoSection.tsx";
 import { defPInfo, defEducations, defExp, eduType, expType } from "./data.ts";
 import CV from "./CV.tsx";
 import Section from "./Section.tsx";
+import InfoSection from "./InfoSection.tsx";
 import EduSection from "./EduSection.tsx";
 import ExpSection from "./ExpSection.tsx";
 import DropArea from "./DropArea.tsx";
-import generatePDF, { Resolution, Options } from "react-to-pdf";
+import savePDF from "./savePDF.ts";
 
 function App(): JSX.Element {
   //get from storage or use default values
@@ -229,20 +229,6 @@ function App(): JSX.Element {
     newOrder = [...newOrder, moveCard, ...remainingCards];
     setExpInfo(newOrder);
   }
-  // save to PDF
-  const options: Options = {
-    method: "open",
-    resolution: Resolution.HIGH,
-    page: {
-      format: "letter",
-    },
-    overrides: {
-      canvas: { useCORS: true },
-    },
-  };
-  const savePDF = () => {
-    generatePDF(() => document.getElementById("CV"), options);
-  };
   return (
     <div className="flex">
       <div className="flex flex-col">
