@@ -237,7 +237,8 @@ function App(): JSX.Element {
           expInfo={expInfo}
         ></CV>
         <button 
-          className="flex align-middle h-12 m-8 ml-0 p-4 bg-white bg-opacity-30 rounded-lg"
+          className="flex align-middle min-w-14 h-12 m-8 ml-0 p-4
+                     bg-white bg-opacity-30 rounded-lg"
           onClick={()=>savePDF()}
           title="Download">
           <img src="/download.png" className="h-6"></img>
