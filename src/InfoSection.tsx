@@ -1,43 +1,43 @@
 import Input from "./Input";
 import { pInfoType } from "./data";
 
-interface infoProps{
-  pInfo:Record<pInfoType,string>,
-  handleChange: (e:React.ChangeEvent<HTMLInputElement>) => void
+interface infoProps {
+  pInfo: Record<pInfoType, string>;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
-function InfoSection({pInfo, handleChange}:infoProps): JSX.Element {
+function InfoSection({ pInfo, handleChange }: infoProps): JSX.Element {
   return (
     <form className="section">
       <h2 className="text-xl font-medium">Personal Details:</h2>
-      <Input 
+      <Input
         title="Name"
-        id={'name'}
+        id={"name"}
         value={pInfo.name}
-        type='text'
-        handleChange={handleChange}>
-      </Input>
-      <Input 
+        type="text"
+        handleChange={handleChange}
+      ></Input>
+      <Input
         title="Email"
-        id={'email'}
+        id={"email"}
         value={pInfo.email}
-        type='text'
-        handleChange={handleChange}>
-      </Input>
-      <Input 
+        type="text"
+        handleChange={handleChange}
+      ></Input>
+      <Input
         title="Number"
-        id={'number'}
+        id={"number"}
         value={pInfo.number}
-        type='text'
-        handleChange={handleChange}>
-      </Input>
-      <Input 
+        type="text"
+        handleChange={handleChange}
+      ></Input>
+      <Input
         title="Location"
-        id={'address'}
+        id={"address"}
         value={pInfo.address}
-        type='text'
-        handleChange={handleChange}>
-      </Input>
+        type="text"
+        handleChange={handleChange}
+      ></Input>
     </form>
-  )
+  );
 }
 export default InfoSection;

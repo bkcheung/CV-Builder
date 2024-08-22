@@ -1,12 +1,18 @@
 interface InputProps {
-  title: string,
-  value: string,
-  id: string,
-  type: string,
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  title: string;
+  value: string;
+  id: string;
+  type: string;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function Input({ title,value,id,type,handleChange}: InputProps): JSX.Element {
+function Input({
+  title,
+  value,
+  id,
+  type,
+  handleChange,
+}: InputProps): JSX.Element {
   return (
     <div className="flex items-center">
       <h3>{title}:</h3>
