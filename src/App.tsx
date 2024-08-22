@@ -7,6 +7,7 @@ import InfoSection from "./InfoSection.tsx";
 import EduSection from "./EduSection.tsx";
 import ExpSection from "./ExpSection.tsx";
 import DropArea from "./DropArea.tsx";
+import Footer from "./Footer.tsx";
 import savePDF from "./savePDF.ts";
 
 function App(): JSX.Element {
@@ -233,34 +234,38 @@ function App(): JSX.Element {
     setExpInfo(newOrder);
   }
   return (
-    <div className="flex">
-      <div className="flex flex-col">
-        <InfoSection pInfo={pInfo} handleChange={pInfoChange}></InfoSection>
-        <Section
-          sectionName="Education"
-          inputs={eduSections}
-          active={activeSection === "Education"}
-          addNew={addEdu}
-          toggleSection={toggleSection}
-        ></Section>
-        <Section
-          sectionName="Experience"
-          inputs={expSections}
-          active={activeSection === "Experience"}
-          addNew={addExp}
-          toggleSection={toggleSection}
-        ></Section>
+    <>
+      <div className="flex">
+        <div className="flex flex-col">
+          <InfoSection pInfo={pInfo} handleChange={pInfoChange}></InfoSection>
+          <Section
+            sectionName="Education"
+            inputs={eduSections}
+            active={activeSection === "Education"}
+            addNew={addEdu}
+            toggleSection={toggleSection}
+          ></Section>
+          <Section
+            sectionName="Experience"
+            inputs={expSections}
+            active={activeSection === "Experience"}
+            addNew={addExp}
+            toggleSection={toggleSection}
+          ></Section>
+        </div>
+        <CV pInfo={pInfo} eduInfo={eduInfo} expInfo={expInfo}></CV>
+        <button
+          className="flex align-middle min-w-14 h-12 m-8 ml-0 p-4
+                      bg-white bg-opacity-30 rounded-lg"
+          onClick={() => savePDF()}
+          title="Download"
+        >
+          <div className="download icon"></div>
+        </button>
       </div>
-      <CV pInfo={pInfo} eduInfo={eduInfo} expInfo={expInfo}></CV>
-      <button
-        className="flex align-middle min-w-14 h-12 m-8 ml-0 p-4
-                     bg-white bg-opacity-30 rounded-lg"
-        onClick={() => savePDF()}
-        title="Download"
-      >
-        <div className="download icon"></div>
-      </button>
-    </div>
+      <Footer/>
+    </>
+    
   );
 }
 
