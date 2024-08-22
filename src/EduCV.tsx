@@ -17,13 +17,13 @@ function EduCV({eduInfo}:eduProps): JSX.Element {
     return(
        
           <div className="flex justify-between">
-            <div className="flexCol">
+            <div className="flex flex-col">
               <div className="p-1 text-sm" style={{ fontWeight: 500 }}>
                 {eduInfo.degree}
               </div>
               <div className="p-1 text-sm">{eduInfo.school}</div>
             </div>
-            <div className="flexCol rightAlign">
+            <div className="flex flex-col text-right">
               <i>
                 <div className="p-1 text-sm">{start} - {end}</div>
               </i>

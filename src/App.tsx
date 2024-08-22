@@ -206,14 +206,12 @@ function App(): JSX.Element {
     overrides:{
       canvas:{useCORS: true},
     }
-    
   }
   const savePDF = () => {
     generatePDF(() => document.getElementById("CV"), options);
   };
   return (
     <div className="flex">
-      <button onClick={()=>savePDF()}>Download</button>
       <div className="flex flex-col">
         <InfoSection
           pInfo={pInfo}
@@ -239,6 +237,9 @@ function App(): JSX.Element {
           eduInfo={eduInfo}
           expInfo={expInfo}
         ></CV>
+        <button className="h-12 m-8 ml-0 p-2 bg-white bg-opacity-30 rounded-lg"onClick={()=>savePDF()}>
+          <img src="/download.png" className="h-8"></img>
+        </button>
     </div>
   );
 }
