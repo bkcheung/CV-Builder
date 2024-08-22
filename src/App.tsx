@@ -7,6 +7,7 @@ import Section from "./Section.tsx";
 import EduSection from "./EduSection.tsx";
 import ExpSection from "./ExpSection.tsx";
 import DropArea from "./DropArea.tsx";
+import generatePDF, { Resolution, Options } from "react-to-pdf";
 
 function App(): JSX.Element {
   //get from storage or use default values
@@ -194,8 +195,25 @@ function App(): JSX.Element {
     newOrder = [...newOrder, moveCard, ...remainingCards];
     setExpInfo(newOrder);
   }
+  // save to PDF
+  const options:Options = {
+    method: "open",
+    filename: `${pInfo.name}-CV.pdf`,
+    resolution: Resolution.HIGH,
+    page: {
+      format: "letter",
+    },
+    overrides:{
+      canvas:{useCORS: true},
+    }
+    
+  }
+  const savePDF = () => {
+    generatePDF(() => document.getElementById("CV"), options);
+  };
   return (
     <div className="flex">
+      <button onClick={()=>savePDF()}>Download</button>
       <div className="flex flex-col">
         <InfoSection
           pInfo={pInfo}
@@ -216,11 +234,11 @@ function App(): JSX.Element {
           toggleSection={toggleSection}
         ></Section>
       </div>
-      <CV
-        pInfo={pInfo}
-        eduInfo={eduInfo}
-        expInfo={expInfo}
-      ></CV>
+        <CV
+          pInfo={pInfo}
+          eduInfo={eduInfo}
+          expInfo={expInfo}
+        ></CV>
     </div>
   );
 }

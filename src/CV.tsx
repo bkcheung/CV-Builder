@@ -17,21 +17,22 @@ export default function CV({ pInfo, eduInfo, expInfo }:cvProps): JSX.Element {
       <ExpCV key={exp.id} expInfo={exp}></ExpCV>
     )});
   return (
-    <div className="CV">
+    <div id="CV">
       <div className="cvHeader">
-       <div className="text-3xl mb-2">{pInfo.name}</div>
-        <div className="flex justify-between items-center">
+      <div className="text-3xl mb-2">{pInfo.name}</div>
+      <div className="flex justify-between items-center">
+       {/* <div className="headerText"> */}
           <div className="flex">
-            <img className="h-4" src="/mail.png"></img>
-            <div className="ml-1">{pInfo.email}</div>
+            {/* <div className="mail"></div> */}
+            <div className="ml-1">✉️ {pInfo.email}</div>
           </div>
           <div className="flex">
-            <img className="h-4" src="/telephone.png"></img>
-            <div className="ml-1">{pInfo.number}</div>
+            {/* <img className="h-4" src="/telephone.png"></img> */}
+            <div className="ml-1">📞 {pInfo.number}</div>
           </div>
           <div className="flex">
-            <img className="h-4" src="/location.png"></img>
-            <div className="ml-1">{pInfo.address}</div>
+            {/* <img className="h-4" src="/location.png"></img> */}
+            <div className="ml-1">📍 {pInfo.address}</div>
           </div>
         </div>
       </div>

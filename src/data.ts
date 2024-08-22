@@ -22,7 +22,7 @@ export const defEducations:Record<eduType,string>[] = [{
 export const defExp:Record<expType,string>[] = [{
     company: 'Apple',
     title: 'iPad Product Design Engineer',
-    description:'Reduced R&D cost by ~$2M by architecting a unified MLB design that \
+    description:'Architectured a unified MLB design that \
     can be shared between different sized products\nCollaborated with cross-functional \
     teams, including EE, Thermals, Antenna, RF, Rel, and factory teams to design a variety \
     of flexes and PCBs for next generation products.\nSpearheaded innovative new design \

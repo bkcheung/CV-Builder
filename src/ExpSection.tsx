@@ -62,7 +62,7 @@ function ExpSection({expInfo, handleChange, isActive, toggleExp, delExp, setActi
         <div className="flex flex-col items-start">
             <h3>Description:</h3>
             <textarea
-            className="m-0 min-w-full"
+            className="m-0 p-2 min-w-full"
             id='description'
             rows={3}
             defaultValue={expInfo.description}

@@ -17,7 +17,7 @@ function ExpCV({expInfo}:expProps): JSX.Element {
     const descArray = expInfo.description.split('\n');
     const descList = descArray.map((desc:string, index)=>{
     return(
-      <li key={index}>{desc}</li>
+      <div key={index}>• {desc}</div>
     )
   })
     return(
