@@ -9,6 +9,7 @@ import ExpSection from "./components/ExpSection.tsx";
 import DropArea from "./components/DropArea.tsx";
 import Footer from "./components/Footer.tsx";
 import savePDF from "./savePDF.ts";
+import _ from "lodash"
 
 function App(): JSX.Element {
   //get from storage or use default values
@@ -32,16 +33,22 @@ function App(): JSX.Element {
   const [activeExp, setActiveExp] = useState("");
   const [activeCard, setActiveCard] = useState("");
   const [activeSection, setActiveSection] = useState("Experience");
-  //update storage
+  //update storage with 1s debounce
+  const updatePInfo = _.debounce(()=>{localStorage.setItem("pInfo", JSON.stringify(pInfo))},1000);
+  const updateEduInfo = _.debounce(()=>{localStorage.setItem("eduInfo", JSON.stringify(eduInfo))},1000);
+  const updateExpInfo = _.debounce(()=>{localStorage.setItem("expInfo", JSON.stringify(expInfo))},1000);
   useEffect(() => {
-    localStorage.setItem("pInfo", JSON.stringify(pInfo));
-  }, [pInfo]);
+    updatePInfo();
+    return () => updatePInfo.cancel();
+  }, [pInfo, updatePInfo]);
   useEffect(() => {
-    localStorage.setItem("eduInfo", JSON.stringify(eduInfo));
-  }, [eduInfo]);
+    updateEduInfo()
+    return () => updateEduInfo.cancel();
+  }, [eduInfo, updateEduInfo]);
   useEffect(() => {
-    localStorage.setItem("expInfo", JSON.stringify(expInfo));
-  }, [expInfo]);
+    updateExpInfo()
+    return () => updateExpInfo.cancel();
+  }, [expInfo, updateExpInfo]);
   //generate sections
   const eduSections = eduInfo.map(
     (edu: Record<eduType, string>, index: number) => {
@@ -56,9 +63,8 @@ function App(): JSX.Element {
             isActive={activeEdu === edu.id}
             toggleEdu={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
               e.preventDefault();
-              {
-                activeEdu === edu.id ? setActiveEdu("") : setActiveEdu(edu.id);
-              }
+              if(activeEdu===edu.id) setActiveEdu("");
+              else setActiveEdu(edu.id);
             }}
             delEdu={delEdu}
             setActiveCard={setActiveCard}
