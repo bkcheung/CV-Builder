@@ -63,7 +63,7 @@ function App(): JSX.Element {
             isActive={activeEdu === edu.id}
             toggleEdu={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
               e.preventDefault();
-              if(activeEdu===edu.id) setActiveEdu("");
+              if(activeEdu === edu.id) setActiveEdu("");
               else setActiveEdu(edu.id);
             }}
             delEdu={delEdu}
@@ -87,9 +87,8 @@ function App(): JSX.Element {
             isActive={activeExp === exp.id}
             toggleExp={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
               e.preventDefault();
-              {
-                activeExp === exp.id ? setActiveExp("") : setActiveExp(exp.id);
-              }
+              if(activeExp === exp.id) setActiveExp("");
+              else setActiveExp(exp.id);
             }}
             delExp={delExp}
             setActiveCard={setActiveCard}
@@ -144,7 +143,8 @@ function App(): JSX.Element {
       if (form.querySelector("div") !== null) {
         form.querySelector("div")?.toggleAttribute("hidden");
       }
-      activeSection === id ? setActiveSection("") : setActiveSection(id);
+      if(activeSection === id ) setActiveSection("");
+      else setActiveSection(id);
     }
   }
   function delEdu(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
