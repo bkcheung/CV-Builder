@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 import { defPInfo, defEducations, defExp, eduType, expType } from "./data.ts";
-import CV from "./CV.tsx";
-import Section from "./Section.tsx";
-import InfoSection from "./InfoSection.tsx";
-import EduSection from "./EduSection.tsx";
-import ExpSection from "./ExpSection.tsx";
-import DropArea from "./DropArea.tsx";
-import Footer from "./Footer.tsx";
+import CV from "./components/CV/CV.tsx";
+import Section from "./components/Section.tsx";
+import InfoSection from "./components/InfoSection.tsx";
+import EduSection from "./components/EduSection.tsx";
+import ExpSection from "./components/ExpSection.tsx";
+import DropArea from "./components/DropArea.tsx";
+import Footer from "./components/Footer.tsx";
 import savePDF from "./savePDF.ts";
 
 function App(): JSX.Element {

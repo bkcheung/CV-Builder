@@ -1,5 +1,5 @@
 import Input from "./Input";
-import { pInfoType } from "./data";
+import { pInfoType } from "../data";
 
 interface infoProps {
   pInfo: Record<pInfoType, string>;

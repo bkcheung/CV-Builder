@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { expType } from "./data";
+import { expType } from "../../data";
 
 interface expProps {
   expInfo: Record<expType, string>;

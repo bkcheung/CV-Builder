@@ -1,4 +1,4 @@
-import { pInfoType, eduType, expType } from "./data";
+import { pInfoType, eduType, expType } from "../../data";
 import EduCV from "./EduCV";
 import ExpCV from "./ExpCV";
 

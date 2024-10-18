@@ -1,5 +1,5 @@
 import Input from "./Input";
-import { expType } from "./data";
+import { expType } from "../data";
 
 interface expProps {
   expInfo: Record<expType, string>;

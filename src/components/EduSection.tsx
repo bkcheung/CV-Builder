@@ -1,5 +1,5 @@
 import Input from "./Input";
-import { eduType } from "./data";
+import { eduType } from "../data";
 
 interface eduProps {
   eduInfo: Record<eduType, string>;
