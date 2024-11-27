@@ -240,8 +240,8 @@ function App(): JSX.Element {
     setExpInfo(newOrder);
   }
   return (
-    <>
-      <div className="flex">
+    <main className="w-[100vw]">
+      <div className="flex justify-center w-[100vw] min-h-[100vh]">
         <div className="flex flex-col">
           <InfoSection pInfo={pInfo} handleChange={pInfoChange}></InfoSection>
           <Section
@@ -261,7 +261,7 @@ function App(): JSX.Element {
         </div>
         <CV pInfo={pInfo} eduInfo={eduInfo} expInfo={expInfo}></CV>
         <button
-          className="flex align-middle min-w-14 h-12 m-8 ml-0 p-4
+          className="flex align-middle min-w-14 h-12 mt-8 p-4
                       bg-white bg-opacity-30 rounded-lg"
           onClick={() => savePDF()}
           title="Download"
@@ -270,7 +270,7 @@ function App(): JSX.Element {
         </button>
       </div>
       <Footer/>
-    </>
+    </main>
     
   );
 }
